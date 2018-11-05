@@ -9,7 +9,7 @@ const path = require('path');
 module.exports = function routes(app, root) {
   // Any new endpoints you create you will want to add them here
   // Example route: app.route('urlpath', RouteJsFile);
-  app.route('/api/users', require('./api/users/index.js'));
+  app.use('/api/users', require('./api/users'));
 
   /**
    * Here we can handle all error routes and point them to a component in the components folder
@@ -17,10 +17,10 @@ module.exports = function routes(app, root) {
    * registered, and point it to an error 404 message. You can find the error 404 code under
    * server/components/errors/index.js   as for the error 404 view that can be found under server/views/404.html
    */
-  //  app.route('/:url(api|auth|component|app|assets)/*').get(errors[404]);
+   app.route('/:url(api|auth|component|app|assets)/*').get(errors[404]);
 
   // All Other routes get redirected to the index if they not under /api
   //app.route('/*').get((req, res) => {
-    //res.sendFile(path.join(root, 'dist/index.html'));
-  //});
+  // res.sendFile(path.join(root, 'dist/index.html'));
+  // });
 };

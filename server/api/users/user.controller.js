@@ -71,7 +71,12 @@ function create(req, res) {
   newUser.role = 'user';
   // Now lets save the user
   return newUser.save().then(function(user) { // then when the user saves
-    res.json({user}); // let's return the user entry to the person
+    // We will be returning only a few fields that we should need.
+    res.json({
+      name: user.name,
+      _id: user._id,
+      role: user.role
+    }); // let's return the user entry to the person
     // NOTE: We are not currently encrypting the user password, this is bad.
   }).catch(validationError(res)); // catch any errors
 }

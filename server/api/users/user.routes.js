@@ -11,7 +11,7 @@ const router = express.Router();
  * method: GET
  * function: listAllUsers() in the users.controller.js file
  */
-router.get('/', controller.listAllUsers);
+ router.get('/', controller.listAllUsers);
 /**
  * path: /api/users
  * method: POST
