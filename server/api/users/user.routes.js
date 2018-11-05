@@ -25,6 +25,13 @@ router.post('/', controller.create);
  */
 router.get('/:id', controller.findUserByEmail);
 
+/**
+ * path: /api/login
+ * method: POST
+ * function: login() in the users.controller.js file
+ */
+router.post('/login', controller.login);
+
 // We export the routes to the express app, in the routes.js file we will assign the base URL for this endpoint.
 // in this file we simply want to specify the path after the base /api/users url.
 module.exports = router;

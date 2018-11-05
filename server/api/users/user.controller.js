@@ -1,4 +1,6 @@
 'use strict';
+const jwt = require('jsonwebtoken');
+const config = require('../../config');
 const User = require('./user.model');
 
 /**
@@ -81,5 +83,54 @@ function create(req, res) {
   }).catch(validationError(res)); // catch any errors
 }
 
+/**
+ *
+ * @param {Express.Request} req - Express Request object
+ * @param {*} res - Express Response Object
+ */
+function login(req, res) {
+  // Find user by email
+  User.findOne({
+    email: req.body.email
+  }).then(user => {
+    // Once we find the user, now let's pass the password from req.body to authenticate
+    if (!user) {
+      // Return false, user not even registered, but let's not tell them.
+      res.send({
+        message: false
+      });
+    }
+    user.authenticate(req.body.password, function (authErr, authenticated) {
+      if (authErr) {
+        res.send(authErr);
+      }
+      if (!authenticated) {
+        // Return false, password invalid
+        res.send({
+          message: false
+        });
+      } else {
+        // User is authenticated, let's created a webtoken
+        const token = jwt.sign({
+          _id: user._id
+        }, config.secrets.session, {
+          expiresIn: 60 * 60 * 5 // set expire time for token
+        });
+        // Let's return the created JSON Web token with some fields from the user Model
+        // we can use these fields to populate in the application who this logged in user is.
+        res.json({
+          token: token,
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          message: true
+        });
+      }
+    });
+  }).catch(validationError(res));
+
+}
+
 // Any functions we create, we want to return these functions to the express app to use.
-module.exports = { listAllUsers, findUserByEmail, create};
+module.exports = { listAllUsers, findUserByEmail, create, login};
