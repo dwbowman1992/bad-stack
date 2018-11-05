@@ -9,6 +9,8 @@ const connectMongo = require('connect-mongo');
 const session = require('express-session');
 const MongoStore = connectMongo(session);
 
+let cors = require('cors');
+
 // Import our config file so we may use the data inside
 const config = require('./server/config');
 
@@ -24,6 +26,8 @@ mongoose.connection.on('error', (err) => {
  * We create the app variable and initialize it to be an Express Application
  */
 const app = express();
+
+app.use(cors());
 
 // body parser is quite detailed so read the following article to understand how it works.
 // Understanding how Body Parser works : https://medium.com/@adamzerner/how-bodyparser-works-247897a93b90
