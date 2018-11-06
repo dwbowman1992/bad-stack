@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
       // We will import the Router from @angular/router and assign it in the constructor
       // then we route the user to the login page and pass parameters with the returnURL
       // So we can return to the requested page after login.
-      this.router.navigate(['/login'], {queryParams: { returnUrl: state.url }});
+      this.router.navigate(['/'], {queryParams: { returnUrl: state.url }});
       return false;
     }
   }
