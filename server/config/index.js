@@ -15,8 +15,6 @@ const all = {
     // Connection data
     connection: {
       useMongoClient: true,
-      // uri: 'mongodb://<user>:<pwd>@databaseip:port/database'
-      // uri: 'mongodb://localhost:27017/db'
       uri: 'mongodb://badUserTest:badUserPass@localhost:27017/database'
     },
     // Mongo DB Options
