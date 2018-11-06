@@ -1,0 +1,14 @@
+.login-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 300px;
+  margin-top: -150px; /* half of you height */
+  width: 400px;
+  margin-left: -200px; /* half of you width */
+}
+
+#signup-button {
+  margin-left: 10px;
+  background-color: orange;
+}
