@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { ViewChild, ElementRef } from '@angular/core';
-
-const APIEndpoint = environment.apiUrl;
 
 @Component({
   selector: 'app-login',
@@ -13,20 +8,12 @@ const APIEndpoint = environment.apiUrl;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('closeSignupModal') closeSignupModal: ElementRef;
   credentials: any = {
     email: '',
     pwd: ''
   };
 
-  signupCredentials: any = {
-    email: '',
-    pwd: '',
-    name: '',
-    phone: ''
-  };
-
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) { }
   returnURL: string;
 
   ngOnInit() {
@@ -48,27 +35,6 @@ export class LoginComponent implements OnInit {
         // route user to the return URL
         this.router.navigateByUrl(this.returnURL);
       }
-    });
-  }
-
-  signup() {
-    this.http.post(APIEndpoint + 'users', {
-      name: this.signupCredentials.name,
-      email: this.signupCredentials.email,
-      password: this.signupCredentials.pwd,
-      phone: this.signupCredentials.phone
-    }).subscribe((data : any) => {
-      this.credentials.email = this.signupCredentials.email;
-      this.credentials.pwd = this.signupCredentials.pwd;
-      this.closeSignupModal.nativeElement.click();
-      this.login();
-    }, (err) => {
-      this.signupCredentials.name = '';
-      this.signupCredentials.email = '';
-      this.signupCredentials.pwd = '';
-      this.signupCredentials.phone = '';
-      this.closeSignupModal.nativeElement.click();
-      // add bootstrap toaster error notification
     });
   }
 

@@ -67,7 +67,6 @@ function findUserByEmail(req, res, next) {
  * @param {*} res  - Express Response object
  */
 function create(req, res) {
-  console.log('her');
   // Define the new user, give the constructor the req.body containing all fields
   let newUser = new User(req.body);
   // if role not defined, lets give it a default user role, although our model should handle this
@@ -124,8 +123,7 @@ function login(req, res) {
           _id: user._id,
           name: user.name,
           email: user.email,
-          role: user.role,
-          message: true
+          role: user.role
         });
       }
     });
