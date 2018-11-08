@@ -15,7 +15,7 @@ let cors = require('cors');
 const config = require('./server/config');
 
 // Set up a Mongodb Connection as a Promise it will connect
-const mongooseConnectionPromise = mongoose.connect(config.mongo.connection.uri, { useNewUrlParser: true });
+const mongooseConnectionPromise = mongoose.connect(process.env.MONGODB_URI || config.mongo.connection.uri, { useNewUrlParser: true });
 // Check if mongoose connected, if it didn't check for an error, print to developer, and exit.
 mongoose.connection.on('error', (err) => {
   console.error('MongoDB Connection Error: ' + err);
@@ -56,7 +56,7 @@ app.use(session({
   // Mongo Store instantiates the connection with the MongoDB database
   // And saves the session if connection is successfull.
   store: new MongoStore({
-    url: config.mongo.connection.uri
+    url: process.env.MONGODB_URI || config.mongo.connection.uri
   })
 }));
 

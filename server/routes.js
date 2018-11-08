@@ -20,7 +20,7 @@ module.exports = function routes(app, root) {
    app.route('/:url(api|auth|component|app|assets)/*').get(errors[404]);
 
   // All Other routes get redirected to the index if they not under /api
-  //app.route('/*').get((req, res) => {
-  // res.sendFile(path.join(root, 'dist/index.html'));
-  // });
+  app.route('/*').get((req, res) => {
+   res.sendFile(path.join(root, 'dist/index.html'));
+  });
 };

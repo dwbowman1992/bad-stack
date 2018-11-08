@@ -27,6 +27,8 @@
               "client/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "client/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
@@ -77,6 +79,8 @@
             "tsConfig": "client/tsconfig.spec.json",
             "karmaConfig": "client/karma.conf.js",
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "client/styles.scss"
             ],
             "scripts": [],
@@ -128,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "bad-boyfriendIntegration"
+  "defaultProject": "bad-stack"
 }

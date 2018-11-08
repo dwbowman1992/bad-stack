@@ -26,7 +26,7 @@ router.post('/', controller.create);
 router.get('/:id', controller.findUserByEmail);
 
 /**
- * path: /api/login
+ * path: /api/users/login
  * method: POST
  * function: login() in the users.controller.js file
  */
