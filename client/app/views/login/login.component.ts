@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  isFadeOut = false;
   credentials: any = {
     email: '',
     pwd: ''
@@ -20,11 +21,8 @@ export class LoginComponent implements OnInit {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
-  applyClass(event) {
-    console.log(event);
-  }
-
   login() {
+    this.isFadeOut = true;
     // We checked for validation in HTML so our credentials should not be blank.
     this.auth.login(this.credentials.email, this.credentials.pwd).subscribe((data: any ) => {
       if (data.message === false) {
@@ -37,7 +35,9 @@ export class LoginComponent implements OnInit {
         // into an object later
         localStorage.setItem('currentUsr', JSON.stringify(data));
         // route user to the return URL
-        this.router.navigateByUrl(this.returnURL);
+        setTimeout( () => {
+          this.router.navigateByUrl(this.returnURL);
+        }, 2000);
       }
     });
   }
