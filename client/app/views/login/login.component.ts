@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+  }
+
+  applyClass(event) {
+    console.log(event);
   }
 
   login() {

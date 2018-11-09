@@ -1,12 +1,83 @@
-.login-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 300px;
-  margin-top: -150px; /* half of you height */
-  width: 400px;
-  margin-left: -200px; /* half of you width */
+.login {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #4286f4, #b8f441);
+  &-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 300px;
+    margin-top: -150px; /* half of you height */
+    width: 400px;
+    margin-left: -200px; /* half of you width */
+    & h1 {
+      font-family: "Times New Roman", Times, serif;
+      width: 50%;
+      color: whitesmoke;
+      overflow: hidden; /* Ensures the content is not revealed until the animation */
+      border-right: .15em solid orange; /* The typwriter cursor */
+      white-space: nowrap; /* Keeps the content on a single line */
+      margin: 10px auto; /* Gives that scrolling effect as the typing happens */
+      letter-spacing: 2px; /* Adjust as needed */
+      animation:
+        typing 2s steps(40, end),
+        blink-caret .6s step-end infinite;
+    }
+    & label {
+      font-family: "Times New Roman", Times, serif;
+      color: whitesmoke;
+    }
+    & input {
+      &:focus {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        border: 1px solid lightgrey;
+      }
+    }
+  }
 }
+
+/* The typing effect */
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 50% }
+}
+
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #007bff; }
+}
+
+/* fade out effect */
+
+.animated {
+  -webkit-animation-duration: 10s;animation-duration: 10s;
+  -webkit-animation-fill-mode: both;animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+
+
 
 #signup-modal-content {
   margin-top: 20px;
