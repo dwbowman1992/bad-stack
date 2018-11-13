@@ -1,7 +1,7 @@
 <div class="login" #loginElem>
   <div class="login-container col-sm">
     <form [ngClass]="{'animated fadeOut':isFadeOut}" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-      <h1>BadStack</h1>
+      <h1 appTypewriter="BADStack"></h1><span><h1 class="typewriter">|</h1></span>
       <div class="form-group">
         <label>Email Address:</label>
         <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Enter Email" [(ngModel)]="credentials.email" required>

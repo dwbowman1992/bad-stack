@@ -1,7 +1,7 @@
 .login {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to bottom right, #4286f4, #b8f441);
+  // background-image: linear-gradient(to bottom right, #4286f4, #b8f441);
   &-container {
     position: absolute;
     left: 50%;
@@ -12,20 +12,13 @@
     margin-left: -200px; /* half of you width */
     & h1 {
       font-family: "Times New Roman", Times, serif;
-      width: 50%;
-      color: whitesmoke;
-      overflow: hidden; /* Ensures the content is not revealed until the animation */
-      border-right: .15em solid orange; /* The typwriter cursor */
-      white-space: nowrap; /* Keeps the content on a single line */
-      margin: 10px auto; /* Gives that scrolling effect as the typing happens */
-      letter-spacing: 2px; /* Adjust as needed */
-      animation:
-        typing 2s steps(40, end),
-        blink-caret .6s step-end infinite;
+      display: inline;
+      margin: 10px 0 10px 0;
     }
     & label {
+      margin-top: 10px;
       font-family: "Times New Roman", Times, serif;
-      color: whitesmoke;
+      color: black;
     }
     & input {
       &:focus {
@@ -40,18 +33,15 @@
   }
 }
 
-/* The typing effect */
-
-@keyframes typing {
-  from { width: 0 }
-  to { width: 50% }
+/* typewriter effect */
+.typewriter {
+  animation: blink-caret .5s linear infinite;
 }
 
-/* The typewriter cursor effect */
-
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #007bff; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* fade out effect */
