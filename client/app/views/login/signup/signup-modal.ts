@@ -1,7 +1,7 @@
 import {Component, TemplateRef} from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 const APIEndpoint = environment.apiUrl;

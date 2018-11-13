@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { TypewriterDirective } from '../../directives/typewriter.directive';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.isFadeOut = true;
     // We checked for validation in HTML so our credentials should not be blank.
     this.auth.login(this.credentials.email, this.credentials.pwd).subscribe((data: any ) => {
       if (data.message === false) {
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
         this.credentials.email = '';
         this.credentials.pwd = '';
       } else {
+        this.isFadeOut = true;
         // if we get here, there is no error, the return is valid
         // Let's first save the info into local storage for later use. We can parse this back
         // into an object later
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
         // route user to the return URL
         setTimeout( () => {
           this.router.navigateByUrl(this.returnURL);
-        }, 2000);
+        }, 1000);
       }
     });
   }
