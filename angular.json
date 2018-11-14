@@ -32,7 +32,10 @@
               "client/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./BadTownBuild/Build/UnityLoader.js",
+              "./BadTownBuild/TemplateData/UnityProgress.js"
+            ]
           },
           "configurations": {
             "production": {
