@@ -41,7 +41,6 @@
     "path": "^0.12.7",
     "rxjs": "~6.2.0",
     "ts-node": "~7.0.0",
-    "unity-loader": "^1.0.11",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
