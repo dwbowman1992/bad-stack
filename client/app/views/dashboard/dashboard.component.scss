@@ -1,7 +1,13 @@
 #dashboard {
   width: 100vw;
-  background-image: linear-gradient(to bottom right, #4286f4, #b8f441);
+  background-image: linear-gradient(to right, #4ECDC4, #556270);
   height:100em;
+  & h1 {
+    font-family: "Times New Roman", Times, serif;
+    display: inline;
+    margin: 10px 0 10px 0;
+    font-size: 30px;
+  }
 }
 
 .navbar {
