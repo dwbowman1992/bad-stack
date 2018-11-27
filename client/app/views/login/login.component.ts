@@ -43,4 +43,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  onPan(event) {
+    console.log(event);
+  }
+
 }

@@ -10,7 +10,6 @@ import { LoginComponent } from './views/login/login.component';
 import { SignupModalComponent } from './views/login/signup/signup-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypewriterDirective } from './directives/typewriter.directive';
-import { BadcityComponent } from './views/badcity/badcity.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { BadcityComponent } from './views/badcity/badcity.component';
     DashboardComponent,
     LoginComponent,
     SignupModalComponent,
-    TypewriterDirective,
-    BadcityComponent
+    TypewriterDirective
   ],
   imports: [
     BrowserModule,
