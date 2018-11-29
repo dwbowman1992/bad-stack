@@ -43,8 +43,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onPan(event) {
-    console.log(event);
+  onTap(event) {
+    if (event.pointerType === 'touch') {
+      // open modal dialog
+      console.log(event);
+    }
   }
 
 }

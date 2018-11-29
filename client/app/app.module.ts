@@ -10,6 +10,7 @@ import { LoginComponent } from './views/login/login.component';
 import { SignupModalComponent } from './views/login/signup/signup-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypewriterDirective } from './directives/typewriter.directive';
+import { LoginformComponent } from './views/login/loginform/loginform.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TypewriterDirective } from './directives/typewriter.directive';
     DashboardComponent,
     LoginComponent,
     SignupModalComponent,
-    TypewriterDirective
+    TypewriterDirective,
+    LoginformComponent
   ],
   imports: [
     BrowserModule,
