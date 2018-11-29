@@ -8,7 +8,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form [ngClass]="{'animated fadeOut':isFadeOut}" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
       <div class="form-group">
         <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Email" [(ngModel)]="credentials.email" required>
       </div>
@@ -16,7 +16,7 @@
         <input type="password" class="form-control" name="pwd" placeholder="Password" [(ngModel)]="credentials.pwd" required>
       </div>
       <button type="submit" class="btn btn-primary">Login</button>
-      <app-signup-modal></app-signup-modal>
+      <app-signup-modal (click)="onSignupClick()"></app-signup-modal>
     </form>
   </div>
 </ng-template>
