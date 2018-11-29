@@ -1,17 +1,8 @@
 <div class="login" #loginElem>
   <div class="login-container col-sm">
     <h1 appTypewriter="BadStack"></h1><span><h1 class="typewriter">|</h1></span>
-    <!--form [ngClass]="{'animated fadeOut':isFadeOut}" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-      <h1 appTypewriter="BadStack"></h1><span><h1 class="typewriter">|</h1></span>
-      <div class="form-group">
-        <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Email" [(ngModel)]="credentials.email" required>
-      </div>
-      <div class="form-group">
-        <input type="password" class="form-control" name="pwd" placeholder="Password" [(ngModel)]="credentials.pwd" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
-      <app-signup-modal></app-signup-modal>
-    </form-->
   </div>
-  <div class="login-container-bottom-pan" (panup)="onPan($event)">^</div>
+  <div class="login-container-bottom-pan bounce-animated bounce" (tap)="onTap($event)">
+    <app-loginform></app-loginform>
+  </div>
 </div>
