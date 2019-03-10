@@ -154,7 +154,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_login_signup_signup_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/login/signup/signup-modal */ "./client/app/views/login/signup/signup-modal.ts");
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./directives/typewriter.directive */ "./client/app/directives/typewriter.directive.ts");
-/* harmony import */ var _views_login_loginform_loginform_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/login/loginform/loginform.component */ "./client/app/views/login/loginform/loginform.component.ts");
+/* harmony import */ var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @fortawesome/angular-fontawesome */ "./node_modules/@fortawesome/angular-fontawesome/fesm5/angular-fontawesome.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -183,14 +183,14 @@ var AppModule = /** @class */ (function () {
                 _views_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"],
                 _views_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
                 _views_login_signup_signup_modal__WEBPACK_IMPORTED_MODULE_8__["SignupModalComponent"],
-                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__["TypewriterDirective"],
-                _views_login_loginform_loginform_component__WEBPACK_IMPORTED_MODULE_11__["LoginformComponent"]
+                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__["TypewriterDirective"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+                _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_11__["FontAwesomeModule"],
                 ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__["ModalModule"].forRoot()
             ],
             providers: [],
@@ -273,6 +273,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/data.service */ "./client/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -284,14 +285,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var AuthGuard = /** @class */ (function () {
-    function AuthGuard(router) {
+    function AuthGuard(router, dataservice) {
         this.router = router;
+        this.dataservice = dataservice;
     }
     AuthGuard.prototype.canActivate = function (next, state) {
         // Check if a 'currentUser' exists in the localStorage object
         // this will return undefined || false if there isn't
-        if (localStorage['currentUsr']) {
+        if (this.dataservice.getCurrentUser()) {
             // User is logged in, let's let them through
             return true;
         }
@@ -308,7 +311,7 @@ var AuthGuard = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -366,6 +369,55 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./client/app/services/data.service.ts":
+/*!*********************************************!*\
+  !*** ./client/app/services/data.service.ts ***!
+  \*********************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DataService = /** @class */ (function () {
+    function DataService() {
+    }
+    DataService.prototype.setCurrentUser = function (userData) {
+        localStorage.setItem('user', JSON.stringify(userData));
+    };
+    DataService.prototype.getCurrentUser = function () {
+        return localStorage.getItem('user');
+    };
+    DataService.prototype.removeCurrentUser = function () {
+        localStorage.removeItem('user');
+    };
+    DataService.prototype.getCurrentUserToken = function () {
+        return JSON.parse(localStorage.getItem('user')).token;
+    };
+    DataService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], DataService);
+    return DataService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./client/app/views/dashboard/dashboard.component.html":
 /*!*************************************************************!*\
   !*** ./client/app/views/dashboard/dashboard.component.html ***!
@@ -373,7 +425,7 @@ var AuthService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg navbar-light\">\n    <h1 class=\"navbar-brand\" href=\"#\">{{ title }}</h1>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item active\">\n          <a class=\"nav-link\" href=\"#\">Home <span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"#\">Link</a>\n        </li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            Dropdown\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\" href=\"#\">Action</a>\n            <a class=\"dropdown-item\" href=\"#\">Another action</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n          </div>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link disabled\" href=\"#\">Disabled</a>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n  <div id=\"dashboard-content\">\n    Dashboard  Content\n  </div>\n</div>\n"
+module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg navbar-light\">\n    <h1 class=\"navbar-brand\">{{ title }}</h1>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\" aria-controls=\"navbarSupportedContent\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item active\">\n          <a class=\"nav-link\" href=\"/dashboard\">Home <span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            User\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\">Add User Picture Here</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\">Settings</a>\n          </div>\n        </li>\n      </ul>\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        <button class=\"btn btn-outline-success my-2 my-sm-0\" type=\"submit\">Search</button>\n      </form>\n    </div>\n  </nav>\n  <div id=\"dashboard-content\">\n    Dashboard  Content\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -384,7 +436,7 @@ module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#dashboard {\n  width: 100vw;\n  background-image: linear-gradient(to right, #4ECDC4, #556270);\n  height: 100em; }\n  #dashboard h1 {\n    font-family: \"Times New Roman\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px; }\n  .navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0%;\n  background-color: transparent; }\n"
+module.exports = "#dashboard {\n  width: 100vw;\n  background-color: #4e4c67;\n  height: 100em; }\n  #dashboard h1 {\n    font-family: \"Times New Roman\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px; }\n  .navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0%;\n  background-color: transparent; }\n"
 
 /***/ }),
 
@@ -399,6 +451,10 @@ module.exports = "#dashboard {\n  width: 100vw;\n  background-image: linear-grad
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./client/app/services/data.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./client/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -409,10 +465,38 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl;
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(dataservice, http) {
+        var _this = this;
+        this.dataservice = dataservice;
+        this.http = http;
         this.title = 'BadStack';
+        this.tokenInterval = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(100000).subscribe(function (x) {
+            _this.checkToken();
+        });
     }
+    DashboardComponent.prototype.checkToken = function () {
+        var _this = this;
+        var token = this.dataservice.getCurrentUserToken();
+        this.http
+            .request('GET', 'api/session/isAuthenticated', {
+            responseType: 'json',
+            params: {
+                token: token
+            }
+        })
+            .subscribe(function (data) {
+            if (!data.authenticated) {
+                _this.dataservice.removeCurrentUser();
+                _this.tokenInterval.unsubscribe();
+            }
+        });
+    };
     DashboardComponent.prototype.ngOnInit = function () {
     };
     DashboardComponent = __decorate([
@@ -421,7 +505,7 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./client/app/views/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./client/app/views/dashboard/dashboard.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -437,7 +521,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login\" #loginElem>\n  <div class=\"login-container col-sm\">\n    <h1 appTypewriter=\"BadStack\"></h1><span><h1 class=\"typewriter\">|</h1></span>\n  </div>\n  <div class=\"login-container-bottom-pan bounce-animated bounce\" (tap)=\"onTap($event)\">\n    <app-loginform></app-loginform>\n  </div>\n</div>\n"
+module.exports = "<div class=\"login\" #loginElem>\n  <!--form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n    <div>\n      <input type=\"email\" class=\"form-control\" name=\"email\" aria-describedby=\"email\" placeholder=\"Email\" [(ngModel)]=\"credentials.email\" required>\n      <input type=\"password\" class=\"form-control\" name=\"pwd\" placeholder=\"Password\" [(ngModel)]=\"credentials.pwd\" required>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n    <app-signup-modal></app-signup-modal>\n  </form-->\n  <div class=\"col-sm\">\n    <button (click)=\"onLoginClick()\" class=\"login-button btn btn-primary btn-lg\">\n      Login <fa-icon [icon]=\"faSignInAlt\"></fa-icon>\n    </button>\n    <button (click)=\"onSignupClick()\" class=\"signup-button btn btn-primary btn-lg\">\n      Sign Up <fa-icon [icon]=\"faClipboardCheck\"></fa-icon>\n    </button>\n  </div>\n  <div class=\"login-container col-sm\">\n    <h1 appTypewriter=\"BadStack\"></h1><span><h1 class=\"typewriter\">|</h1></span>\n  </div>\n  <!--div class=\"login-container-bottom-pan bounce-animated bounce\" (tap)=\"onTap($event)\">\n\n  </div-->\n</div>\n"
 
 /***/ }),
 
@@ -448,7 +532,7 @@ module.exports = "<div class=\"login\" #loginElem>\n  <div class=\"login-contain
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".login {\n  width: 100%;\n  height: 100vh;\n  background-image: linear-gradient(to right, #4ECDC4, #556270); }\n  .login-container {\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    height: 300px;\n    margin-top: -150px;\n    /* half of you height */\n    width: 400px;\n    margin-left: -200px;\n    /* half of you width */\n    padding: 10px 25px 10px 25px; }\n  .login-container h1 {\n      font-family: \"Times New Roman\", Times, serif;\n      display: inline;\n      margin: 10px 0 10px 0;\n      font-size: 72px; }\n  .login-container label {\n      margin-top: 10px;\n      font-family: \"Times New Roman\", Times, serif;\n      color: black; }\n  .login-container input:focus {\n      -webkit-transition: all 0.30s ease-in-out;\n      -moz-transition: all 0.30s ease-in-out;\n      -ms-transition: all 0.30s ease-in-out;\n      -o-transition: all 0.30s ease-in-out;\n      outline: none;\n      border: 1px solid lightgrey; }\n  .login-container-bottom-pan {\n    width: 100%;\n    position: absolute;\n    bottom: 0px;\n    text-align: center;\n    vertical-align: middle;\n    line-height: 90px; }\n  /* typewriter effect */\n  .typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n  @-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  @keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  /* fade out effect */\n  .animated {\n  -webkit-animation-duration: 2s;\n  animation-duration: 2s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both; }\n  @-webkit-keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  @keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  .fadeOut {\n  -webkit-animation-name: fadeOut;\n  animation-name: fadeOut; }\n  .bounce {\n  -webkit-animation-name: bounce;\n          animation-name: bounce; }\n  @-webkit-keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  @keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  .bounce-animated {\n  -webkit-animation-duration: 2.5s;\n  animation-duration: 2.5s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite; }\n  #signup-modal-content {\n  margin-top: 20px; }\n  #signup-form {\n  margin-top: 10px; }\n"
+module.exports = ".login {\n  width: 100vw;\n  height: 100vh;\n  background-color: #4e4c67; }\n  .login-container {\n    top: 25%; }\n  .login-container h1 {\n      font-family: \"Times New Roman\", Times, serif;\n      color: #fff;\n      display: inline;\n      margin: 10px 0 10px 0;\n      font-size: 72px;\n      opacity: .3; }\n  .login-container label {\n      margin-top: 10px;\n      font-family: \"Times New Roman\", Times, serif;\n      color: black; }\n  .login-container input:focus {\n      -webkit-transition: all 0.30s ease-in-out;\n      -moz-transition: all 0.30s ease-in-out;\n      -ms-transition: all 0.30s ease-in-out;\n      -o-transition: all 0.30s ease-in-out;\n      outline: none;\n      border: 1px solid lightgrey; }\n  .login-container-bottom-pan {\n    width: 100%;\n    position: absolute;\n    bottom: 0px;\n    text-align: center;\n    vertical-align: middle;\n    line-height: 90px; }\n  .login-button {\n  font-family: \"Times New Roman\", Times, serif;\n  float: right;\n  margin: 5% 0px 15px 0px;\n  background-color: #70a9a1;\n  font-size: 20px;\n  color: #fff;\n  border: none;\n  opacity: .5; }\n  .login-button:hover {\n    opacity: .75;\n    color: #222222; }\n  .signup-button {\n  font-family: \"Times New Roman\", Times, serif;\n  float: right;\n  font-size: 20px;\n  margin: 5% 5px 15px 0px;\n  background-color: #8e4a49;\n  color: #fff;\n  border: none;\n  opacity: .5; }\n  .signup-button:hover {\n    opacity: .75;\n    color: #222222; }\n  /* typewriter effect */\n  .typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n  @-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  @keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  /* fade out effect */\n  .animated {\n  -webkit-animation-duration: 2s;\n  animation-duration: 2s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both; }\n  @-webkit-keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  @keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  .fadeOut {\n  -webkit-animation-name: fadeOut;\n  animation-name: fadeOut; }\n  .bounce {\n  -webkit-animation-name: bounce;\n          animation-name: bounce; }\n  @-webkit-keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  @keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  .bounce-animated {\n  -webkit-animation-duration: 2.5s;\n  animation-duration: 2.5s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite; }\n  #signup-modal-content {\n  margin-top: 20px; }\n  #signup-form {\n  margin-top: 10px; }\n"
 
 /***/ }),
 
@@ -463,72 +547,10 @@ module.exports = ".login {\n  width: 100%;\n  height: 100vh;\n  background-image
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
-    }
-    LoginComponent.prototype.ngOnInit = function () { };
-    LoginComponent.prototype.onTap = function (event) {
-        if (event.pointerType === 'touch') {
-            // open modal dialog
-        }
-    };
-    LoginComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-login',
-            template: __webpack_require__(/*! ./login.component.html */ "./client/app/views/login/login.component.html"),
-            styles: [__webpack_require__(/*! ./login.component.scss */ "./client/app/views/login/login.component.scss")]
-        })
-    ], LoginComponent);
-    return LoginComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.html":
-/*!*******************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.html ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div (click)=\"openModal(template)\">^</div>\n\n<ng-template #template>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Login</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n      <div class=\"form-group\">\n        <input type=\"email\" class=\"form-control\" name=\"email\" aria-describedby=\"email\" placeholder=\"Email\" [(ngModel)]=\"credentials.email\" required>\n      </div>\n      <div class=\"form-group\">\n        <input type=\"password\" class=\"form-control\" name=\"pwd\" placeholder=\"Password\" [(ngModel)]=\"credentials.pwd\" required>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n      <app-signup-modal (click)=\"onSignupClick()\"></app-signup-modal>\n    </form>\n  </div>\n</ng-template>\n"
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.scss":
-/*!*******************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.scss ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.ts":
-/*!*****************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.ts ***!
-  \*****************************************************************/
-/*! exports provided: LoginformComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginformComponent", function() { return LoginformComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth.service */ "./client/app/services/auth.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./client/app/services/auth.service.ts");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/data.service */ "./client/app/services/data.service.ts");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -542,23 +564,31 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var LoginformComponent = /** @class */ (function () {
-    function LoginformComponent(router, auth, modalService, route) {
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(router, auth, route, dataService) {
         this.router = router;
         this.auth = auth;
-        this.modalService = modalService;
         this.route = route;
+        this.dataService = dataService;
         this.credentials = {
             email: '',
             pwd: ''
         };
+        this.faSignInAlt = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faSignInAlt"];
+        this.faClipboardCheck = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_4__["faClipboardCheck"];
     }
-    LoginformComponent.prototype.ngOnInit = function () {
+    LoginComponent.prototype.ngOnInit = function () {
         this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     };
-    LoginformComponent.prototype.login = function () {
+    LoginComponent.prototype.onLoginClick = function () {
+        console.log('login');
+    };
+    LoginComponent.prototype.onSignupClick = function () {
+        console.log('signup');
+    };
+    LoginComponent.prototype.login = function () {
         var _this = this;
-        this.modalRef.hide();
         // We checked for validation in HTML so our credentials should not be blank.
         this.auth.login(this.credentials.email, this.credentials.pwd).subscribe(function (data) {
             if (data.message === false) {
@@ -570,7 +600,7 @@ var LoginformComponent = /** @class */ (function () {
                 // if we get here, there is no error, the return is valid
                 // Let's first save the info into local storage for later use. We can parse this back
                 // into an object later
-                localStorage.setItem('currentUsr', JSON.stringify(data));
+                _this.dataService.setCurrentUser(data);
                 // route user to the return URL
                 setTimeout(function () {
                     _this.router.navigateByUrl(_this.returnURL);
@@ -578,21 +608,15 @@ var LoginformComponent = /** @class */ (function () {
             }
         });
     };
-    LoginformComponent.prototype.onSignupClick = function () {
-        this.modalRef.hide();
-    };
-    LoginformComponent.prototype.openModal = function (template) {
-        this.modalRef = this.modalService.show(template);
-    };
-    LoginformComponent = __decorate([
+    LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-loginform',
-            template: __webpack_require__(/*! ./loginform.component.html */ "./client/app/views/login/loginform/loginform.component.html"),
-            styles: [__webpack_require__(/*! ./loginform.component.scss */ "./client/app/views/login/loginform/loginform.component.scss")]
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./client/app/views/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./client/app/views/login/login.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
-    ], LoginformComponent);
-    return LoginformComponent;
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]])
+    ], LoginComponent);
+    return LoginComponent;
 }());
 
 
@@ -626,6 +650,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../services/auth.service */ "./client/app/services/auth.service.ts");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../services/data.service */ "./client/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -641,14 +666,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl;
 var SignupModalComponent = /** @class */ (function () {
-    function SignupModalComponent(modalService, http, router, auth, route) {
+    function SignupModalComponent(modalService, http, router, auth, route, dataservice) {
         this.modalService = modalService;
         this.http = http;
         this.router = router;
         this.auth = auth;
         this.route = route;
+        this.dataservice = dataservice;
         this.add = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.signupCredentials = {
             email: '',
@@ -678,7 +705,7 @@ var SignupModalComponent = /** @class */ (function () {
                     // if we get here, there is no error, the return is valid
                     // Let's first save the info into local storage for later use. We can parse this back
                     // into an object later
-                    localStorage.setItem('currentUsr', JSON.stringify(data));
+                    _this.dataservice.setCurrentUser(data);
                     // route user to the return URL
                     setTimeout(function () {
                         _this.router.navigateByUrl(_this.returnURL);
@@ -708,7 +735,7 @@ var SignupModalComponent = /** @class */ (function () {
             selector: 'app-signup-modal',
             template: __webpack_require__(/*! ./signup-modal.html */ "./client/app/views/login/signup/signup-modal.html")
         }),
-        __metadata("design:paramtypes", [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_6__["DataService"]])
     ], SignupModalComponent);
     return SignupModalComponent;
 }());
@@ -779,7 +806,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dylanbowman/Desktop/projects/bad-stack/client/main.ts */"./client/main.ts");
+module.exports = __webpack_require__(/*! /Users/dylanbowman/bad-stack/client/main.ts */"./client/main.ts");
 
 
 /***/ })

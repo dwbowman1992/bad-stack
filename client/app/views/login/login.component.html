@@ -1,8 +1,24 @@
 <div class="login" #loginElem>
+  <!--form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+    <div>
+      <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="Email" [(ngModel)]="credentials.email" required>
+      <input type="password" class="form-control" name="pwd" placeholder="Password" [(ngModel)]="credentials.pwd" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <app-signup-modal></app-signup-modal>
+  </form-->
+  <div class="col-sm">
+    <button (click)="onLoginClick()" class="login-button btn btn-primary btn-lg">
+      Login <fa-icon [icon]="faSignInAlt"></fa-icon>
+    </button>
+    <button (click)="onSignupClick()" class="signup-button btn btn-primary btn-lg">
+      Sign Up <fa-icon [icon]="faClipboardCheck"></fa-icon>
+    </button>
+  </div>
   <div class="login-container col-sm">
     <h1 appTypewriter="BadStack"></h1><span><h1 class="typewriter">|</h1></span>
   </div>
-  <div class="login-container-bottom-pan bounce-animated bounce" (tap)="onTap($event)">
-    <app-loginform></app-loginform>
-  </div>
+  <!--div class="login-container-bottom-pan bounce-animated bounce" (tap)="onTap($event)">
+
+  </div-->
 </div>

@@ -8,7 +8,7 @@ const all = {
   // secrets used to encrypt session data
   secrets: {
     // this secret is used to encrypt express session logs as well as user password
-    session: 'sample-secret'
+    session: 'treYistheLovEMylifE'
   },
   // Mongo Db settings
   mongo: {

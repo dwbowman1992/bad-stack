@@ -114,7 +114,7 @@ function login(req, res) {
         const token = jwt.sign({
           _id: user._id
         }, config.secrets.session, {
-          expiresIn: 60 * 60 * 5 // set expire time for token
+          expiresIn: 1800 // set expire time for token
         });
         // Let's return the created JSON Web token with some fields from the user Model
         // we can use these fields to populate in the application who this logged in user is.
@@ -129,8 +129,8 @@ function login(req, res) {
       }
     });
   }).catch(validationError(res));
-
 }
+
 
 // Any functions we create, we want to return these functions to the express app to use.
 module.exports = { listAllUsers, findUserByEmail, create, login};

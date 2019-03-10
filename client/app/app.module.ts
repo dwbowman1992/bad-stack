@@ -10,7 +10,7 @@ import { LoginComponent } from './views/login/login.component';
 import { SignupModalComponent } from './views/login/signup/signup-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypewriterDirective } from './directives/typewriter.directive';
-import { LoginformComponent } from './views/login/loginform/loginform.component';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,14 +18,14 @@ import { LoginformComponent } from './views/login/loginform/loginform.component'
     DashboardComponent,
     LoginComponent,
     SignupModalComponent,
-    TypewriterDirective,
-    LoginformComponent
+    TypewriterDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    FontAwesomeModule,
     ModalModule.forRoot()
   ],
   providers: [],
