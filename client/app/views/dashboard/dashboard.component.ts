@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   title = 'BadStack';
 
-  tokenInterval = interval(10000).subscribe(x => {
+  tokenInterval = interval(100000).subscribe(x => {
     this.checkToken();
   });
 
