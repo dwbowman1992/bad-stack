@@ -5,6 +5,7 @@ import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../../services/auth.service';
+import {DataService} from '../../../services/data.service';
 
 const APIEndpoint = environment.apiUrl;
 
@@ -30,7 +31,7 @@ export class SignupModalComponent implements OnInit {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
-  constructor(private modalService: BsModalService, private http: HttpClient, private router: Router, private auth: AuthService, private route: ActivatedRoute) {
+  constructor(private modalService: BsModalService, private http: HttpClient, private router: Router, private auth: AuthService, private route: ActivatedRoute, private dataservice: DataService) {
   }
 
   signup() {
@@ -49,7 +50,7 @@ export class SignupModalComponent implements OnInit {
           // if we get here, there is no error, the return is valid
           // Let's first save the info into local storage for later use. We can parse this back
           // into an object later
-          localStorage.setItem('currentUsr', JSON.stringify(data));
+          this.dataservice.setCurrentUser(data);
           // route user to the return URL
           setTimeout( () => {
             this.router.navigateByUrl(this.returnURL);

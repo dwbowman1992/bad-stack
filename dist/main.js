@@ -154,14 +154,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_login_signup_signup_modal__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./views/login/signup/signup-modal */ "./client/app/views/login/signup/signup-modal.ts");
 /* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
 /* harmony import */ var _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./directives/typewriter.directive */ "./client/app/directives/typewriter.directive.ts");
-/* harmony import */ var _views_login_loginform_loginform_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/login/loginform/loginform.component */ "./client/app/views/login/loginform/loginform.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-
 
 
 
@@ -183,8 +181,7 @@ var AppModule = /** @class */ (function () {
                 _views_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"],
                 _views_login_login_component__WEBPACK_IMPORTED_MODULE_7__["LoginComponent"],
                 _views_login_signup_signup_modal__WEBPACK_IMPORTED_MODULE_8__["SignupModalComponent"],
-                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__["TypewriterDirective"],
-                _views_login_loginform_loginform_component__WEBPACK_IMPORTED_MODULE_11__["LoginformComponent"]
+                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_10__["TypewriterDirective"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -273,6 +270,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function() { return AuthGuard; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/data.service */ "./client/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -284,14 +282,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
 var AuthGuard = /** @class */ (function () {
-    function AuthGuard(router) {
+    function AuthGuard(router, dataservice) {
         this.router = router;
+        this.dataservice = dataservice;
     }
     AuthGuard.prototype.canActivate = function (next, state) {
         // Check if a 'currentUser' exists in the localStorage object
         // this will return undefined || false if there isn't
-        if (localStorage['currentUsr']) {
+        if (this.dataservice.getCurrentUser()) {
             // User is logged in, let's let them through
             return true;
         }
@@ -308,7 +308,7 @@ var AuthGuard = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_data_service__WEBPACK_IMPORTED_MODULE_2__["DataService"]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -366,6 +366,55 @@ var AuthService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./client/app/services/data.service.ts":
+/*!*********************************************!*\
+  !*** ./client/app/services/data.service.ts ***!
+  \*********************************************/
+/*! exports provided: DataService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataService", function() { return DataService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DataService = /** @class */ (function () {
+    function DataService() {
+    }
+    DataService.prototype.setCurrentUser = function (userData) {
+        localStorage.setItem('user', JSON.stringify(userData));
+    };
+    DataService.prototype.getCurrentUser = function () {
+        return localStorage.getItem('user');
+    };
+    DataService.prototype.removeCurrentUser = function () {
+        localStorage.removeItem('user');
+    };
+    DataService.prototype.getCurrentUserToken = function () {
+        return JSON.parse(localStorage.getItem('user')).token;
+    };
+    DataService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [])
+    ], DataService);
+    return DataService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./client/app/views/dashboard/dashboard.component.html":
 /*!*************************************************************!*\
   !*** ./client/app/views/dashboard/dashboard.component.html ***!
@@ -399,6 +448,10 @@ module.exports = "#dashboard {\n  width: 100vw;\n  background-image: linear-grad
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardComponent", function() { return DashboardComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/data.service */ "./client/app/services/data.service.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../environments/environment */ "./client/environments/environment.ts");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -409,10 +462,38 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
+
+
+var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].apiUrl;
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent() {
+    function DashboardComponent(dataservice, http) {
+        var _this = this;
+        this.dataservice = dataservice;
+        this.http = http;
         this.title = 'BadStack';
+        this.tokenInterval = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(10000).subscribe(function (x) {
+            _this.checkToken();
+        });
     }
+    DashboardComponent.prototype.checkToken = function () {
+        var _this = this;
+        var token = this.dataservice.getCurrentUserToken();
+        this.http
+            .request('GET', 'api/session/isAuthenticated', {
+            responseType: 'json',
+            params: {
+                token: token
+            }
+        })
+            .subscribe(function (data) {
+            if (!data.authenticated) {
+                _this.dataservice.removeCurrentUser();
+                _this.tokenInterval.unsubscribe();
+            }
+        });
+    };
     DashboardComponent.prototype.ngOnInit = function () {
     };
     DashboardComponent = __decorate([
@@ -421,7 +502,7 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./client/app/views/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.scss */ "./client/app/views/dashboard/dashboard.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_services_data_service__WEBPACK_IMPORTED_MODULE_1__["DataService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], DashboardComponent);
     return DashboardComponent;
 }());
@@ -437,7 +518,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"login\" #loginElem>\n  <div class=\"login-container col-sm\">\n    <h1 appTypewriter=\"BadStack\"></h1><span><h1 class=\"typewriter\">|</h1></span>\n  </div>\n  <div class=\"login-container-bottom-pan bounce-animated bounce\" (tap)=\"onTap($event)\">\n    <app-loginform></app-loginform>\n  </div>\n</div>\n"
+module.exports = "<div class=\"login\" #loginElem>\n  <nav class=\"navbar navbar-light bg-light\">\n  <span class=\"navbar-text\">\n    <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n      <div>\n        <input type=\"email\" class=\"form-control\" name=\"email\" aria-describedby=\"email\" placeholder=\"Email\" [(ngModel)]=\"credentials.email\" required>\n        <input type=\"password\" class=\"form-control\" name=\"pwd\" placeholder=\"Password\" [(ngModel)]=\"credentials.pwd\" required>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n      <app-signup-modal></app-signup-modal>\n    </form>\n  </span>\n  </nav>\n  <div class=\"login-container col-sm\">\n    <h1 appTypewriter=\"BadStack\"></h1><span><h1 class=\"typewriter\">|</h1></span>\n  </div>\n  <!--div class=\"login-container-bottom-pan bounce-animated bounce\" (tap)=\"onTap($event)\">\n\n  </div-->\n</div>\n"
 
 /***/ }),
 
@@ -463,72 +544,10 @@ module.exports = ".login {\n  width: 100%;\n  height: 100vh;\n  background-image
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginComponent", function() { return LoginComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
-    }
-    LoginComponent.prototype.ngOnInit = function () { };
-    LoginComponent.prototype.onTap = function (event) {
-        if (event.pointerType === 'touch') {
-            // open modal dialog
-        }
-    };
-    LoginComponent = __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-login',
-            template: __webpack_require__(/*! ./login.component.html */ "./client/app/views/login/login.component.html"),
-            styles: [__webpack_require__(/*! ./login.component.scss */ "./client/app/views/login/login.component.scss")]
-        })
-    ], LoginComponent);
-    return LoginComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.html":
-/*!*******************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.html ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<div (click)=\"openModal(template)\">^</div>\n\n<ng-template #template>\n  <div class=\"modal-header\">\n    <h4 class=\"modal-title pull-left\">Login</h4>\n    <button type=\"button\" class=\"close pull-right\" aria-label=\"Close\" (click)=\"modalRef.hide()\">\n      <span aria-hidden=\"true\">&times;</span>\n    </button>\n  </div>\n  <div class=\"modal-body\">\n    <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n      <div class=\"form-group\">\n        <input type=\"email\" class=\"form-control\" name=\"email\" aria-describedby=\"email\" placeholder=\"Email\" [(ngModel)]=\"credentials.email\" required>\n      </div>\n      <div class=\"form-group\">\n        <input type=\"password\" class=\"form-control\" name=\"pwd\" placeholder=\"Password\" [(ngModel)]=\"credentials.pwd\" required>\n      </div>\n      <button type=\"submit\" class=\"btn btn-primary\">Login</button>\n      <app-signup-modal (click)=\"onSignupClick()\"></app-signup-modal>\n    </form>\n  </div>\n</ng-template>\n"
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.scss":
-/*!*******************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.scss ***!
-  \*******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = ""
-
-/***/ }),
-
-/***/ "./client/app/views/login/loginform/loginform.component.ts":
-/*!*****************************************************************!*\
-  !*** ./client/app/views/login/loginform/loginform.component.ts ***!
-  \*****************************************************************/
-/*! exports provided: LoginformComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginformComponent", function() { return LoginformComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap/modal */ "./node_modules/ngx-bootstrap/modal/fesm5/ngx-bootstrap-modal.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth.service */ "./client/app/services/auth.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ngx-bootstrap */ "./node_modules/ngx-bootstrap/esm5/ngx-bootstrap.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth.service */ "./client/app/services/auth.service.ts");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/data.service */ "./client/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -542,23 +561,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-var LoginformComponent = /** @class */ (function () {
-    function LoginformComponent(router, auth, modalService, route) {
+
+var LoginComponent = /** @class */ (function () {
+    function LoginComponent(router, auth, modalService, route, dataService) {
         this.router = router;
         this.auth = auth;
         this.modalService = modalService;
         this.route = route;
+        this.dataService = dataService;
         this.credentials = {
             email: '',
             pwd: ''
         };
     }
-    LoginformComponent.prototype.ngOnInit = function () {
+    LoginComponent.prototype.ngOnInit = function () {
         this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     };
-    LoginformComponent.prototype.login = function () {
+    LoginComponent.prototype.login = function () {
         var _this = this;
-        this.modalRef.hide();
         // We checked for validation in HTML so our credentials should not be blank.
         this.auth.login(this.credentials.email, this.credentials.pwd).subscribe(function (data) {
             if (data.message === false) {
@@ -570,7 +590,7 @@ var LoginformComponent = /** @class */ (function () {
                 // if we get here, there is no error, the return is valid
                 // Let's first save the info into local storage for later use. We can parse this back
                 // into an object later
-                localStorage.setItem('currentUsr', JSON.stringify(data));
+                _this.dataService.setCurrentUser(data);
                 // route user to the return URL
                 setTimeout(function () {
                     _this.router.navigateByUrl(_this.returnURL);
@@ -578,21 +598,15 @@ var LoginformComponent = /** @class */ (function () {
             }
         });
     };
-    LoginformComponent.prototype.onSignupClick = function () {
-        this.modalRef.hide();
-    };
-    LoginformComponent.prototype.openModal = function (template) {
-        this.modalRef = this.modalService.show(template);
-    };
-    LoginformComponent = __decorate([
+    LoginComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-loginform',
-            template: __webpack_require__(/*! ./loginform.component.html */ "./client/app/views/login/loginform/loginform.component.html"),
-            styles: [__webpack_require__(/*! ./loginform.component.scss */ "./client/app/views/login/loginform/loginform.component.scss")]
+            selector: 'app-login',
+            template: __webpack_require__(/*! ./login.component.html */ "./client/app/views/login/login.component.html"),
+            styles: [__webpack_require__(/*! ./login.component.scss */ "./client/app/views/login/login.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
-    ], LoginformComponent);
-    return LoginformComponent;
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"], ngx_bootstrap__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_4__["DataService"]])
+    ], LoginComponent);
+    return LoginComponent;
 }());
 
 
@@ -626,6 +640,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../services/auth.service */ "./client/app/services/auth.service.ts");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../services/data.service */ "./client/app/services/data.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -641,14 +656,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_2__["environment"].apiUrl;
 var SignupModalComponent = /** @class */ (function () {
-    function SignupModalComponent(modalService, http, router, auth, route) {
+    function SignupModalComponent(modalService, http, router, auth, route, dataservice) {
         this.modalService = modalService;
         this.http = http;
         this.router = router;
         this.auth = auth;
         this.route = route;
+        this.dataservice = dataservice;
         this.add = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.signupCredentials = {
             email: '',
@@ -678,7 +695,7 @@ var SignupModalComponent = /** @class */ (function () {
                     // if we get here, there is no error, the return is valid
                     // Let's first save the info into local storage for later use. We can parse this back
                     // into an object later
-                    localStorage.setItem('currentUsr', JSON.stringify(data));
+                    _this.dataservice.setCurrentUser(data);
                     // route user to the return URL
                     setTimeout(function () {
                         _this.router.navigateByUrl(_this.returnURL);
@@ -708,7 +725,7 @@ var SignupModalComponent = /** @class */ (function () {
             selector: 'app-signup-modal',
             template: __webpack_require__(/*! ./signup-modal.html */ "./client/app/views/login/signup/signup-modal.html")
         }),
-        __metadata("design:paramtypes", [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
+        __metadata("design:paramtypes", [ngx_bootstrap_modal__WEBPACK_IMPORTED_MODULE_1__["BsModalService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_6__["DataService"]])
     ], SignupModalComponent);
     return SignupModalComponent;
 }());
@@ -779,7 +796,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dylanbowman/Desktop/projects/bad-stack/client/main.ts */"./client/main.ts");
+module.exports = __webpack_require__(/*! /Users/dylanbowman/bad-stack/client/main.ts */"./client/main.ts");
 
 
 /***/ })
