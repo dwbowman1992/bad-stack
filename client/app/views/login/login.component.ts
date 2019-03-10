@@ -1,8 +1,9 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {BsModalRef, BsModalService} from 'ngx-bootstrap';
-import {ActivatedRoute, Data, Router} from '@angular/router';
-import {AuthService} from '../../services/auth.service';
-import {DataService} from '../../services/data.service';
+import {Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { DataService } from '../../services/data.service';
+
+import { faSignInAlt, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +11,25 @@ import {DataService} from '../../services/data.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  modalRef: BsModalRef;
-
-  constructor(private router: Router, private auth: AuthService, private modalService: BsModalService, private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private router: Router, private auth: AuthService, private route: ActivatedRoute, private dataService: DataService) { }
   credentials: any = {
     email: '',
     pwd: ''
   };
   returnURL: string;
+  faSignInAlt = faSignInAlt;
+  faClipboardCheck = faClipboardCheck;
 
   ngOnInit() {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
+  }
+
+  onLoginClick() {
+    console.log('login');
+  }
+
+  onSignupClick() {
+    console.log('signup');
   }
 
   login() {
