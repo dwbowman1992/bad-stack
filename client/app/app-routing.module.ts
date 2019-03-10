@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { LoginComponent } from './views/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import {LandingComponent} from './views/landing/landing.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LandingComponent
   },
   {
     path: 'dashboard',

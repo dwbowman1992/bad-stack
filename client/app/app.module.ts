@@ -6,18 +6,16 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { LoginComponent } from './views/login/login.component';
-import { SignupModalComponent } from './views/login/signup/signup-modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypewriterDirective } from './directives/typewriter.directive';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {LandingComponent} from './views/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
-    SignupModalComponent,
+    LandingComponent,
     TypewriterDirective
   ],
   imports: [

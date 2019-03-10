@@ -1,0 +1,46 @@
+<div class="login" #loginElem>
+  <div class="login-container col-sm" style="height:39px">
+    <button (click)="onLoginClick()"
+            [style.opacity]="isLoginClicked? '1' : '.5' "
+            [style.border-radius]="isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' "
+            [style.width]="isLoginClicked? '150px' : 'unset'"
+            style="margin-top:10px;"
+            class="login-button btn btn-primary btn-sm">
+      <span [hidden]="isSignupClicked">Login </span><fa-icon [icon]="faSignInAlt"></fa-icon>
+    </button>
+    <button (click)="onSignupClick()"
+            [style.opacity]="isSignupClicked? '1' : '.5' "
+            [style.border-radius]="isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' "
+            [style.width]="isSignupClicked? '150px' : 'unset'"
+            style="margin-top:10px;"
+            class="signup-button btn btn-primary btn-sm">
+      <span [hidden]="isLoginClicked">Sign Up </span><fa-icon [icon]="faClipboardCheck"></fa-icon>
+    </button>
+  </div>
+  <div [hidden]="isSignupClicked" class="col-sm" style="height:222px;top:39px;">
+    <div style="width:300px; float:right; background-color:#70a9a1; margin-right:5px; border-radius: .25rem 0 .25rem .25rem; border:none" class="card card-body">
+      <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <input class="form-control" style="width:100%;" type="email" name="email" aria-describedby="email" placeholder="email" [(ngModel)]="credentials.email" required>
+        <input class="form-control" style="width:100%; margin-top:5px;" type="password" name="pwd" placeholder="password" [(ngModel)]="credentials.pwd" required>
+        <button style="margin: 0px 0px 0px 0px; box-shadow: unset;" type="submit" class="login-button btn btn-primary btn-sm"><fa-icon [icon]="faSignInAlt"></fa-icon></button>
+      </form>
+    </div>
+  </div>
+  <div [hidden]="isLoginClicked" class="col-sm" style="height:222px;top:39px">
+    <div style="width:300px; float:right; background-color:#8e4a49; margin-right:5px; border-radius: .25rem 0 .25rem .25rem; border:none;" class="card card-body">
+      <form (ngSubmit)="s.form.valid && signup()" #s="ngForm" novalidate id="signup-form">
+        <input type="text" class="form-control" name="name" placeholder="name" [(ngModel)]="signupCredentials.name" required>
+        <input type="email" class="form-control" name="email" aria-describedby="email" placeholder="email" [(ngModel)]="signupCredentials.email" required>
+        <input type="password" class="form-control" name="pwd" placeholder="password" [(ngModel)]="signupCredentials.pwd" required>
+        <input type="text" class="form-control" name="phone" placeholder="phone" [(ngModel)]="signupCredentials.phone" required>
+        <button style="margin: 0px 0px 0px 0px; background-color: #8e4a49; box-shadow: unset;" type="submit" class="login-button btn btn-primary btn-sm"><fa-icon [icon]="faClipboardCheck"></fa-icon></button>
+      </form>
+    </div>
+  </div>
+  <div class="col-sm" style="border-bottom:1px solid #e0e1dd; margin-right:10px; margin-left:10px;"><h1 appTypewriter="T-Stack"></h1><span class="typewriter"><h1>|</h1></span></div>
+  <div class="col-sm" style="text-align:center; position:absolute; bottom:10px; margin-top:5px;">
+    <p>@Copyright2019 v.1.0.0</p>
+    <p>(xxx)xxx-xxxx</p>
+    <p>Dylan Industries &#8482;</p>
+  </div>
+</div>

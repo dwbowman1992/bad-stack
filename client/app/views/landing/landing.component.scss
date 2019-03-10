@@ -1,17 +1,16 @@
 .login {
   width: 100vw;
   height: 100vh;
-  // background-image: linear-gradient(to right, #4ECDC4, #556270);
-  background-color: #4e4c67;
+  background-image: linear-gradient(to right, #415a77, #1b263b);
+  // background-color: #415a77;
   &-container {
-    top: 25%;
+    float: right;
     & h1 {
       font-family: "Times New Roman", Times, serif;
-      color: #fff;
+      color: #e0e1dd;
       display: inline;
       margin: 10px 0 10px 0;
       font-size: 72px;
-      opacity: .3;
     }
     & label {
       margin-top: 10px;
@@ -39,31 +38,51 @@
   }
 }
 
+h1 {
+  font-family: "Times New Roman", Times, serif;
+  color: #e0e1dd;
+  display: inline;
+  margin: 10px 0 10px 10px;
+  font-size: 72px;
+}
+
 .login-button {
   font-family: "Times New Roman", Times, serif;
   float: right;
-  margin: 5% 0px 15px 0px;
+  margin: 0px 5px 0px 0px;
   background-color: #70a9a1;
-  font-size: 20px;
-  color: #fff;
+  color: #e0e1dd;
   border: none;
-  opacity: .5;
-
+  box-shadow: -3px -1px 10px #222;
   &:hover {
     opacity: .75;
     color: #222222;
   }
 }
+
+.card-body {
+  padding: .75rem .75rem .25rem .75rem;
+  box-shadow: -5px 5px 10px #222;
+  position: absolute;
+  top:0px;
+  right:15px;
+}
+
+.form-control {
+  padding: 10px;
+  margin-bottom: 5px;
+  font-size: 12px;
+  height: 28px;
+}
+
 .signup-button {
   font-family: "Times New Roman", Times, serif;
   float: right;
-  font-size: 20px;
-  margin: 5% 5px 15px 0px;
+  margin: 0px 0px 0px 0px;
   background-color: #8e4a49;
-  color: #fff;
+  color: #e0e1dd;
   border: none;
-  opacity: .5;
-
+  box-shadow: -3px -1px 10px #222;
   &:hover {
     opacity: .75;
     color: #222222;
@@ -124,14 +143,16 @@
   animation-iteration-count: infinite;
 }
 
+p {
+  font-size: 8px;
+  margin-bottom:0px;
+  color: #e0e1dd;
+}
+
 
 
 
 #signup-modal-content {
   margin-top: 20px;
-}
-
-#signup-form {
-  margin-top: 10px;
 }
 
