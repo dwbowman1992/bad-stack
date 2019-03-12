@@ -1,17 +1,23 @@
+@import '../../../styles';
+
 #dashboard {
   width: 100vw;
-  background-color: #4e4c67;
   height:100em;
+  background-image: $APP_BACKGROUND;
   & h1 {
-    font-family: "Times New Roman", Times, serif;
+    font-family: $APP_FONT;
     display: inline;
     margin: 10px 0 10px 0;
     font-size: 30px;
+    color: $LOGO_FONT_COLOR;
+  }
+  &-content {
+
   }
 }
 
 .navbar {
   position:sticky;
   top:0%;
-  background-color: transparent;
+  background-color: #2222221a;
 }
