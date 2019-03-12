@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
-    "build": "ng build --watch & nodemon app.js --watch dist --watch server",
+    "start": "ng build --watch & nodemon app.js --watch dist --watch server",
+    "build": "ng build --prod --base-href ./",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --prod --base-href ./"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

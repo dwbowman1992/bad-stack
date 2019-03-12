@@ -1,42 +1,35 @@
-.login {
+.landing {
   width: 100vw;
   height: 100vh;
   min-width: 375px;
   min-height: 361px;
   background-image: linear-gradient(to right, #415a77, #cbd2d9);
   // background-color: #415a77;
-  &-container {
+  &-header {
     float: right;
-    & h1 {
-      font-family: "Times New Roman", Times, serif;
-      color: #e0e1dd;
-      display: inline;
-      margin: 10px 0 10px 0;
-      font-size: 102px;
+    & div {
+
     }
     & label {
-      margin-top: 10px;
-      font-family: "Times New Roman", Times, serif;
-      color: black;
+      font-family: "Courier", Times, serif;
+      margin-bottom: 0;
     }
-    & input {
-      &:focus {
-        -webkit-transition: all 0.30s ease-in-out;
-        -moz-transition: all 0.30s ease-in-out;
-        -ms-transition: all 0.30s ease-in-out;
-        -o-transition: all 0.30s ease-in-out;
-        outline: none;
-        border: 1px solid lightgrey;
+    & button {
+      font-family: "Courier", Times, serif;
+      float: right;
+      margin: 10px 0px 0px 0px;
+      color: #222222;
+      border: none;
+      box-shadow: -3px -1px 10px #222;
+      &:hover {
+        opacity: .75;
+        color: #222222;
       }
     }
-  }
-  &-container-bottom-pan {
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    text-align: center;
-    vertical-align: middle;
-    line-height: 90px;
+    & input {
+      width:100%;
+      font-size:13px;
+    }
   }
 }
 
@@ -49,50 +42,26 @@ h1 {
 }
 
 .login-button {
-  font-family: "Courier", Times, serif;
-  float: right;
-  margin: 0px 5px 0px 0px;
   background-color: #91c7b1;
-  color: #222222;
-  border: none;
-  box-shadow: -3px -1px 10px #222;
-  &:hover {
-    opacity: .75;
-    color: #222222;
-  }
 }
 
 .login-input {
-  width:100%;
   background-color: #ebf4f0;
-  border: 0;
+  border:0px;
   border-bottom:1px solid #91c7b1;
-  font-size:13px;
 }
 
-.login-label {
-  font-family: "Courier", Times, serif;
-  margin-bottom: 0;
-}
 .signup-input {
-  width:100%;
   background-color: #fcfaea;
-  border: 0;
+  border: 0px;
   border-bottom:1px solid #fdf5bf;
-  font-size:13px;
 }
-
-.signup-label {
-  font-family: "Courier", Times, serif;
-  margin-bottom: 0;
-}
-
 
 .card-body {
   padding: .75rem .75rem .25rem .75rem;
   box-shadow: -5px 5px 10px #222;
   position: absolute;
-  top:0px;
+  top:39px;
   right:15px;
 }
 
@@ -104,45 +73,15 @@ h1 {
 }
 
 .signup-button {
-  font-family: "Courier", Times, serif;
-  float: right;
-  margin: 0px 0px 0px 0px;
   background-color: #fdf5bf;
-  color: #222222;
-  border: none;
-  box-shadow: -3px -1px 10px #222;
-  &:hover {
-    opacity: .75;
-    color: #222222;
-  }
 }
 
 .info-button {
-  font-family: "Courier", Times, serif;
-  float: right;
-  margin: 0px 0px 0px 0px;
   background-color: #5e7ce2;
-  color: #222222;
-  border: none;
-  box-shadow: -3px -1px 10px #222;
-  &:hover {
-    opacity: .75;
-    color: #222222;
-  }
 }
 
 .help-button {
-  font-family: "Courier", Times, serif;
-  float: right;
-  margin: 0px 0px 0px 0px;
   background-color: #f7934c;
-  color: #222222;
-  border: none;
-  box-shadow: -3px -1px 10px #222;
-  &:hover {
-    opacity: .75;
-    color: #222222;
-  }
 }
 
 

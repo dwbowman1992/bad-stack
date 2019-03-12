@@ -44,6 +44,7 @@ export class LandingComponent implements OnInit {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
   }
 
+  //TODO NGSWITCH
   onSignupClick() {
     if (!this.isSignupClicked) {
       this.isSignupClicked = true;
