@@ -1,0 +1,80 @@
+@import '../../../../styles';
+
+.landing-header {
+  float: right;
+  .login-tab {
+    background-color: $DARK_GREEN_COLOR;
+  }
+  .info-tab {
+    background-color: $DARK_BLUE_COLOR;
+  }
+  .help-tab {
+    background-color: $DARK_ORANGE_COLOR;
+  }
+  & button {
+    &.signup-tab {
+      background-color: $DARK_YELLOW_COLOR;
+    }
+    font-family: $APP_FONT;
+    float: right;
+    margin: 10px 0px 0px 0px;
+    padding: 5px 5px 5px 5px;
+    color: $NERO_COLOR;
+    border: none;
+    box-shadow: -3px -1px 10px $NERO_COLOR;
+    &:hover {
+      opacity: .75;
+      color: $NERO_COLOR;
+    }
+  }
+  &-card {
+    height: 222px;
+    &-view {
+      width:329px;
+      float:right;
+      border-radius: .25rem 0 .25rem .25rem;
+      z-index: 1;
+      border:none;
+      padding: .75rem .75rem .5rem .75rem;
+      box-shadow: -5px 5px 10px $NERO_COLOR;
+      position: absolute;
+      top:39px;
+      right:15px;
+      &.login {
+        background-color: $LIGHT_GREEN_COLOR;
+      }
+      &.signup {
+        background-color: $LIGHT_YELLOW_COLOR;
+      }
+      &.info {
+        background-color: $LIGHT_BLUE_COLOR;
+      }
+      &.help {
+        background-color: $LIGHT_ORANGE_COLOR;
+      }
+      & button {
+        margin: 0px 0px 0px 0px;
+        background-color: transparent;
+        box-shadow: unset;
+      }
+      & form input {
+        width:100%;
+        font-size:13px;
+        &.login-input {
+          background-color: $LIGHT_GREEN_COLOR;
+          border:0px;
+          border-bottom:1px solid $DARK_GREEN_COLOR;
+        }
+        &.signup-input {
+          background-color: $LIGHT_YELLOW_COLOR;
+          border: 0px;
+          border-bottom:1px solid $DARK_YELLOW_COLOR;
+        }
+      }
+      & form label {
+        font-family: $APP_FONT;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

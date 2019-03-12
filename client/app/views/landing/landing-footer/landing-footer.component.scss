@@ -1,0 +1,33 @@
+@import '../../../../styles';
+
+.landing-footer {
+  &-info {
+    text-align:center;
+    position:absolute;
+    bottom:10px;
+    p {
+      font-size: 8px;
+      margin-bottom:0px;
+      color: #e0e1dd;
+    }
+  }
+  &-logo {
+    border-bottom:1px solid $LOGO_FONT_COLOR;
+    position: absolute;
+    min-width:400px;
+    bottom: 145px;
+    text-align:left;
+    & h1 {
+      font-family: $APP_FONT;
+      font-size: 72px;
+      float:right;
+      color: $LOGO_FONT_COLOR;
+    }
+    & h2 {
+      font-family: $APP_FONT;
+      font-size: 60px;
+      float:right;
+      color: $NERO_COLOR;
+    }
+  }
+}

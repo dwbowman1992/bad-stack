@@ -1,0 +1,71 @@
+<div class="landing-header col-sm">
+  <button (click)="onLoginClick()"
+          [style.opacity]="isLoginClicked? '1' : '.5' "
+          [style.border-radius]="isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' "
+          [style.width]="isLoginClicked? '150px' : '45px'"
+          class="login-tab btn btn-primary btn-sm">
+    <span [hidden]="isSignupClicked || isInfoClicked || isHelpClicked">Login </span><fa-icon [icon]="faSignInAlt"></fa-icon>
+  </button>
+  <button (click)="onSignupClick()"
+          [style.opacity]="isSignupClicked? '1' : '.5' "
+          [style.border-radius]="isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' "
+          [style.width]="isSignupClicked? '150px' : '45px'"
+          class="signup-tab btn btn-primary btn-sm">
+    <span [hidden]="isLoginClicked || isInfoClicked || isHelpClicked">Sign Up </span><fa-icon [icon]="faClipboardCheck"></fa-icon>
+  </button>
+  <button (click)="onInfoClick()"
+          [style.opacity]="isInfoClicked? '1' : '.5' "
+          [style.border-radius]="isInfoClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' "
+          [style.width]="isInfoClicked? '150px' : '45px'"
+          class="info-tab btn btn-primary btn-sm">
+    <span [hidden]="isLoginClicked || isSignupClicked || isHelpClicked">Info </span><fa-icon [icon]="faInfoCircle"></fa-icon>
+  </button>
+  <button (click)="onHelpClick()"
+          [style.opacity]="isHelpClicked? '1' : '.5' "
+          [style.border-radius]="isHelpClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' "
+          [style.width]="isHelpClicked? '150px' : '45px'"
+          class="help-tab btn btn-primary btn-sm">
+    <span [hidden]="isLoginClicked || isSignupClicked || isInfoClicked">Help </span><fa-icon [icon]="faQuestionCircle"></fa-icon>
+  </button>
+  <div class="landing-header-card" [hidden]="isSignupClicked || isInfoClicked || isHelpClicked">
+    <div class="landing-header-card-view login">
+      <form (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <input class="login-input" type="email" name="email" aria-describedby="email" [(ngModel)]="credentials.email" required>
+        <label>email</label>
+        <input class="login-input" type="password" name="pwd" [(ngModel)]="credentials.pwd" required>
+        <label>password</label>
+        <div [hidden]="!passwordHasError" class="alert alert-error" role="alert">
+          {{passwordErrorString}}
+        </div>
+        <button type="submit" class="btn btn-primary btn-sm"><fa-icon [icon]="faSignInAlt"></fa-icon></button>
+      </form>
+    </div>
+  </div>
+  <div class="landing-header-card" [hidden]="isLoginClicked || isInfoClicked || isHelpClicked">
+    <div class="landing-header-card-view signup">
+      <form (ngSubmit)="s.form.valid && signup()" #s="ngForm" novalidate id="signup-form">
+        <input type="text" class="signup-input" name="name" [(ngModel)]="signupCredentials.name" required>
+        <label>name</label>
+        <input type="email" class="signup-input" name="email" aria-describedby="email" [(ngModel)]="signupCredentials.email" required>
+        <label>email</label>
+        <input type="password" class="form-control signup-input" name="pwd" [(ngModel)]="signupCredentials.pwd" required>
+        <label>password</label>
+        <input type="text" class="signup-input" name="phone" [(ngModel)]="signupCredentials.phone" required>
+        <label>phone</label>
+        <button type="submit" class="btn btn-primary btn-sm"><fa-icon [icon]="faClipboardCheck"></fa-icon></button>
+      </form>
+    </div>
+  </div>
+  <div class="landing-header-card" [hidden]="isLoginClicked || isSignupClicked || isHelpClicked">
+    <div class="landing-header-card-view info">
+      This is the information view with some random text that can show the size of the modal dialog
+    </div>
+  </div>
+  <div class="landing-header-card" [hidden]="isInfoClicked || isSignupClicked || isLoginClicked">
+    <div class="landing-header-card-view help">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      </form>
+    </div>
+  </div>
+</div>
