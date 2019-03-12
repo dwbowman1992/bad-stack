@@ -12,7 +12,7 @@
       color: #e0e1dd;
       display: inline;
       margin: 10px 0 10px 0;
-      font-size: 72px;
+      font-size: 102px;
     }
     & label {
       margin-top: 10px;
@@ -45,7 +45,7 @@ h1 {
   color: #e0e1dd;
   display: inline;
   margin: 10px 0 10px 10px;
-  font-size: 72px;
+  font-size: 102px;
 }
 
 .login-button {
@@ -108,6 +108,34 @@ h1 {
   float: right;
   margin: 0px 0px 0px 0px;
   background-color: #fdf5bf;
+  color: #222222;
+  border: none;
+  box-shadow: -3px -1px 10px #222;
+  &:hover {
+    opacity: .75;
+    color: #222222;
+  }
+}
+
+.info-button {
+  font-family: "Courier", Times, serif;
+  float: right;
+  margin: 0px 0px 0px 0px;
+  background-color: #5e7ce2;
+  color: #222222;
+  border: none;
+  box-shadow: -3px -1px 10px #222;
+  &:hover {
+    opacity: .75;
+    color: #222222;
+  }
+}
+
+.help-button {
+  font-family: "Courier", Times, serif;
+  float: right;
+  margin: 0px 0px 0px 0px;
+  background-color: #f7934c;
   color: #222222;
   border: none;
   box-shadow: -3px -1px 10px #222;
