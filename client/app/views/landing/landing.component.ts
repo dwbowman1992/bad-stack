@@ -4,7 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import { HttpClient } from '@angular/common/http';
 
-import { faSignInAlt, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faClipboardCheck, faQuestionCircle, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import {environment} from '../../../environments/environment';
 
 const APIEndpoint = environment.apiUrl;
@@ -31,9 +31,14 @@ export class LandingComponent implements OnInit {
 
   isLoginClicked = true;
   isSignupClicked = false;
+  isInfoClicked = false;
+  isHelpClicked = false;
   returnURL: string;
+
   faSignInAlt = faSignInAlt;
   faClipboardCheck = faClipboardCheck;
+  faQuestionCircle = faQuestionCircle;
+  faInfoCircle = faInfoCircle;
 
   ngOnInit() {
     this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
@@ -42,13 +47,35 @@ export class LandingComponent implements OnInit {
   onSignupClick() {
     if (!this.isSignupClicked) {
       this.isSignupClicked = true;
+      this.isHelpClicked = false;
       this.isLoginClicked = false;
+      this.isInfoClicked = false;
     }
   }
 
   onLoginClick() {
     if (!this.isLoginClicked) {
       this.isLoginClicked = true;
+      this.isHelpClicked = false;
+      this.isSignupClicked = false;
+      this.isInfoClicked = false;
+    }
+  }
+
+  onInfoClick() {
+    if (!this.isInfoClicked) {
+      this.isInfoClicked = true;
+      this.isHelpClicked = false;
+      this.isSignupClicked = false;
+      this.isLoginClicked = false;
+    }
+  }
+
+  onHelpClick() {
+    if (!this.isHelpClicked) {
+      this.isHelpClicked = true;
+      this.isInfoClicked = false;
+      this.isLoginClicked = false;
       this.isSignupClicked = false;
     }
   }
