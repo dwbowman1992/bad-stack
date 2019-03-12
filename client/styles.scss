@@ -1,2 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+$APP_BACKGROUND: linear-gradient(to right, #415a77, #cbd2d9);
+$APP_FONT: "Courier", Times, serif;
+
+$NERO_COLOR: #222222;
+
+$LOGO_FONT_COLOR: #cbd2d9;
+
+$DARK_GREEN_COLOR: #91c7b1;
+$LIGHT_GREEN_COLOR: #ebf4f0;
+
+$DARK_YELLOW_COLOR: #fdf5bf;
+$LIGHT_YELLOW_COLOR: #fcfaea;
+
+$DARK_BLUE_COLOR: #5e7ce2;
+$LIGHT_BLUE_COLOR: #99b2e2;
+
+$DARK_ORANGE_COLOR: #f7934c;
+$LIGHT_ORANGE_COLOR: #fac49d;
+
+$DARK_RED_COLOR: #d36582;
+
+/* alert */
+.alert {
+  &-error {
+    background-color: $DARK_RED_COLOR;
+    color: $LOGO_FONT_COLOR;
+    font-family: $APP_FONT;
+    text-align: center;
+  }
+}
+
+/* typewriter effect */
+.typewriter {
+  animation: blink-caret .5s linear infinite;
+}
+
+@keyframes blink-caret {
+  100% {
+    opacity: 0;
+  }
+}
 
