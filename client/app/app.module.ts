@@ -10,13 +10,17 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { TypewriterDirective } from './directives/typewriter.directive';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {LandingComponent} from './views/landing/landing.component';
+import { LandingHeaderComponent } from './views/landing/landing-header/landing-header.component';
+import { LandingFooterComponent } from './views/landing/landing-footer/landing-footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     LandingComponent,
-    TypewriterDirective
+    TypewriterDirective,
+    LandingHeaderComponent,
+    LandingFooterComponent
   ],
   imports: [
     BrowserModule,

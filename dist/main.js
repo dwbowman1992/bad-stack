@@ -154,12 +154,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./directives/typewriter.directive */ "./client/app/directives/typewriter.directive.ts");
 /* harmony import */ var _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @fortawesome/angular-fontawesome */ "./node_modules/@fortawesome/angular-fontawesome/fesm5/angular-fontawesome.js");
 /* harmony import */ var _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/landing/landing.component */ "./client/app/views/landing/landing.component.ts");
+/* harmony import */ var _views_landing_landing_header_landing_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/landing/landing-header/landing-header.component */ "./client/app/views/landing/landing-header/landing-header.component.ts");
+/* harmony import */ var _views_landing_landing_footer_landing_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/landing/landing-footer/landing-footer.component */ "./client/app/views/landing/landing-footer/landing-footer.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -180,7 +184,9 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 _views_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["DashboardComponent"],
                 _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_10__["LandingComponent"],
-                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_8__["TypewriterDirective"]
+                _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_8__["TypewriterDirective"],
+                _views_landing_landing_header_landing_header_component__WEBPACK_IMPORTED_MODULE_11__["LandingHeaderComponent"],
+                _views_landing_landing_footer_landing_footer_component__WEBPACK_IMPORTED_MODULE_12__["LandingFooterComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -511,45 +517,108 @@ var DashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./client/app/views/landing/landing.component.html":
-/*!*********************************************************!*\
-  !*** ./client/app/views/landing/landing.component.html ***!
-  \*********************************************************/
+/***/ "./client/app/views/landing/landing-footer/landing-footer.component.html":
+/*!*******************************************************************************!*\
+  !*** ./client/app/views/landing/landing-footer/landing-footer.component.html ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing\" #loginElem>\n  <div class=\"landing-header col-sm\">\n    <button (click)=\"onLoginClick()\"\n            [style.opacity]=\"isLoginClicked? '1' : '.5' \"\n            [style.border-radius]=\"isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n            [style.width]=\"isLoginClicked? '150px' : '45px'\"\n            class=\"login-button btn btn-primary btn-sm\">\n      <span [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">Login </span><fa-icon [icon]=\"faSignInAlt\"></fa-icon>\n    </button>\n    <button (click)=\"onSignupClick()\"\n            [style.opacity]=\"isSignupClicked? '1' : '.5' \"\n            [style.border-radius]=\"isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n            [style.width]=\"isSignupClicked? '150px' : '45px'\"\n            class=\"signup-button btn btn-primary btn-sm\">\n      <span [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">Sign Up </span><fa-icon [icon]=\"faClipboardCheck\"></fa-icon>\n    </button>\n    <button (click)=\"onInfoClick()\"\n            [style.opacity]=\"isInfoClicked? '1' : '.5' \"\n            [style.border-radius]=\"isInfoClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n            [style.width]=\"isInfoClicked? '150px' : '45px'\"\n            class=\"info-button btn btn-primary btn-sm\">\n      <span [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">Info </span><fa-icon [icon]=\"faInfoCircle\"></fa-icon>\n    </button>\n    <button (click)=\"onHelpClick()\"\n            [style.opacity]=\"isHelpClicked? '1' : '.5' \"\n            [style.border-radius]=\"isHelpClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n            [style.width]=\"isHelpClicked? '150px' : '45px'\"\n            class=\"help-button btn btn-primary btn-sm\">\n      <span [hidden]=\"isLoginClicked || isSignupClicked || isInfoClicked\">Help </span><fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\n    </button>\n    <div class=\"landing-header-card\" [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">\n      <div class=\"landing-header-card-view card card-body\" style=\"background-color:#ebf4f0;\">\n        <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n          <input class=\"form-control login-input\" type=\"email\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"credentials.email\" required>\n          <label>email</label>\n          <input class=\"form-control login-input\" type=\"password\" name=\"pwd\" [(ngModel)]=\"credentials.pwd\" required>\n          <label>password</label>\n          <button style=\"margin: 13px 0px 4px 0px; background-color:transparent; box-shadow: unset;\" type=\"submit\" class=\"login-button btn btn-primary btn-sm\"><fa-icon [icon]=\"faSignInAlt\"></fa-icon></button>\n        </form>\n      </div>\n    </div>\n    <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">\n      <div class=\"landing-header-card-view card card-body\" style=\"background-color:#fcfaea;\">\n        <form (ngSubmit)=\"s.form.valid && signup()\" #s=\"ngForm\" novalidate id=\"signup-form\">\n          <input type=\"text\" class=\"form-control signup-input\" name=\"name\" [(ngModel)]=\"signupCredentials.name\" required>\n          <label>name</label>\n          <input type=\"email\" class=\"form-control signup-input\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"signupCredentials.email\" required>\n          <label>email</label>\n          <input type=\"password\" class=\"form-control signup-input\" name=\"pwd\" [(ngModel)]=\"signupCredentials.pwd\" required>\n          <label>password</label>\n          <input type=\"text\" class=\"form-control signup-input\" name=\"phone\" [(ngModel)]=\"signupCredentials.phone\" required>\n          <label>phone</label>\n          <button style=\"margin: 13px 0px 0px 0px; background-color: transparent; box-shadow: unset;\" type=\"submit\" class=\"login-button btn btn-primary btn-sm\"><fa-icon [icon]=\"faClipboardCheck\"></fa-icon></button>\n        </form>\n      </div>\n    </div>\n    <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">\n      <div class=\"landing-header-card-view card card-body\" style=\"background-color:#99b2e2;\">\n        This is the information view with some random text that can show the size of the modal dialog\n      </div>\n    </div>\n    <div class=\"landing-header-card\" [hidden]=\"isInfoClicked || isSignupClicked || isLoginClicked\">\n      <div class=\"landing-header-card-view card card-body\" style=\"background-color:#fac49d;\">\n        <form class=\"form-inline my-2 my-lg-0\">\n          <input style=\"width:100%\" class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n        </form>\n      </div>\n    </div>\n  </div>\n  <div class=\"col-sm\" style=\"border-bottom:1px solid #e0e1dd;position: absolute;bottom: 145px; text-align:right;\">\n    <h1 appTypewriter=\"T-Stack\"></h1><span class=\"typewriter\"><h1>|</h1></span>\n  </div>\n  <div class=\"col-sm\" style=\"text-align:center; position:absolute; bottom:10px;\">\n    <p>@Copyright2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-footer-logo\">\n    <span class=\"typewriter\"><h2>|</h2></span><h1 appTypewriter=\"T-Stack\"></h1>\n  </div>\n  <div class=\"col-sm landing-footer-info\">\n    <p>@Copyright2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
-/***/ "./client/app/views/landing/landing.component.scss":
-/*!*********************************************************!*\
-  !*** ./client/app/views/landing/landing.component.scss ***!
-  \*********************************************************/
+/***/ "./client/app/views/landing/landing-footer/landing-footer.component.scss":
+/*!*******************************************************************************!*\
+  !*** ./client/app/views/landing/landing-footer/landing-footer.component.scss ***!
+  \*******************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 375px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n  .landing-header {\n    float: right; }\n  .landing-header button {\n      font-family: \"Courier\", Times, serif;\n      float: right;\n      margin: 10px 0px 0px 0px;\n      padding: 5px 5px 5px 5px;\n      color: #222222;\n      border: none;\n      box-shadow: -3px -1px 10px #222; }\n  .landing-header button:hover {\n        opacity: .75;\n        color: #222222; }\n  .landing-header-card {\n      height: 222px; }\n  .landing-header-card-view {\n        width: 329px;\n        float: right;\n        border-radius: .25rem 0 .25rem .25rem;\n        z-index: 1;\n        border: none; }\n  .landing-header-card-view form input {\n          width: 100%;\n          font-size: 13px; }\n  .landing-header-card-view form label {\n          font-family: \"Courier\", Times, serif;\n          margin-bottom: 0; }\n  h1 {\n  font-family: \"Times New Roman\", Times, serif;\n  color: #e0e1dd;\n  display: inline;\n  margin: 10px 0 10px 10px;\n  font-size: 102px; }\n  .login-button {\n  background-color: #91c7b1; }\n  .login-input {\n  background-color: #ebf4f0;\n  border: 0px;\n  border-bottom: 1px solid #91c7b1; }\n  .signup-input {\n  background-color: #fcfaea;\n  border: 0px;\n  border-bottom: 1px solid #fdf5bf; }\n  .card-body {\n  padding: .75rem .75rem .5rem .75rem;\n  box-shadow: -5px 5px 10px #222;\n  position: absolute;\n  top: 39px;\n  right: 15px; }\n  .form-control {\n  padding: 10px;\n  margin-bottom: 5px;\n  font-size: 12px;\n  height: 28px; }\n  .signup-button {\n  background-color: #fdf5bf; }\n  .info-button {\n  background-color: #5e7ce2; }\n  .help-button {\n  background-color: #f7934c; }\n  /* typewriter effect */\n  .typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n  @-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  @keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n  /* fade out effect */\n  .animated {\n  -webkit-animation-duration: 2s;\n  animation-duration: 2s;\n  -webkit-animation-fill-mode: both;\n  animation-fill-mode: both; }\n  @-webkit-keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  @keyframes fadeOut {\n  0% {\n    opacity: 1; }\n  100% {\n    opacity: 0; } }\n  .fadeOut {\n  -webkit-animation-name: fadeOut;\n  animation-name: fadeOut; }\n  .bounce {\n  -webkit-animation-name: bounce;\n          animation-name: bounce; }\n  @-webkit-keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  @keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {\n    -webkit-transform: translateY(0);\n            transform: translateY(0); }\n  40% {\n    -webkit-transform: translateY(-30px);\n            transform: translateY(-30px); }\n  60% {\n    -webkit-transform: translateY(-15px);\n            transform: translateY(-15px); } }\n  .bounce-animated {\n  -webkit-animation-duration: 2.5s;\n  animation-duration: 2.5s;\n  -webkit-animation-fill-mode: both;\n          animation-fill-mode: both;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite; }\n  p {\n  font-size: 8px;\n  margin-bottom: 0px;\n  color: #e0e1dd; }\n  #signup-modal-content {\n  margin-top: 20px; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing-footer-info {\n  text-align: center;\n  position: absolute;\n  bottom: 10px; }\n.landing-footer-info p {\n    font-size: 8px;\n    margin-bottom: 0px;\n    color: #e0e1dd; }\n.landing-footer-logo {\n  border-bottom: 1px solid #cbd2d9;\n  position: absolute;\n  min-width: 400px;\n  bottom: 145px;\n  text-align: left; }\n.landing-footer-logo h1 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 72px;\n    float: right;\n    color: #cbd2d9; }\n.landing-footer-logo h2 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 60px;\n    float: right;\n    color: #222222; }\n"
 
 /***/ }),
 
-/***/ "./client/app/views/landing/landing.component.ts":
-/*!*******************************************************!*\
-  !*** ./client/app/views/landing/landing.component.ts ***!
-  \*******************************************************/
-/*! exports provided: LandingComponent */
+/***/ "./client/app/views/landing/landing-footer/landing-footer.component.ts":
+/*!*****************************************************************************!*\
+  !*** ./client/app/views/landing/landing-footer/landing-footer.component.ts ***!
+  \*****************************************************************************/
+/*! exports provided: LandingFooterComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingComponent", function() { return LandingComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingFooterComponent", function() { return LandingFooterComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LandingFooterComponent = /** @class */ (function () {
+    function LandingFooterComponent() {
+    }
+    LandingFooterComponent.prototype.ngOnInit = function () {
+    };
+    LandingFooterComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-landing-footer',
+            template: __webpack_require__(/*! ./landing-footer.component.html */ "./client/app/views/landing/landing-footer/landing-footer.component.html"),
+            styles: [__webpack_require__(/*! ./landing-footer.component.scss */ "./client/app/views/landing/landing-footer/landing-footer.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], LandingFooterComponent);
+    return LandingFooterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing-header/landing-header.component.html":
+/*!*******************************************************************************!*\
+  !*** ./client/app/views/landing/landing-header/landing-header.component.html ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"landing-header col-sm\">\n  <button (click)=\"onLoginClick()\"\n          [style.opacity]=\"isLoginClicked? '1' : '.5' \"\n          [style.border-radius]=\"isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isLoginClicked? '150px' : '45px'\"\n          class=\"login-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">Login </span><fa-icon [icon]=\"faSignInAlt\"></fa-icon>\n  </button>\n  <button (click)=\"onSignupClick()\"\n          [style.opacity]=\"isSignupClicked? '1' : '.5' \"\n          [style.border-radius]=\"isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isSignupClicked? '150px' : '45px'\"\n          class=\"signup-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">Sign Up </span><fa-icon [icon]=\"faClipboardCheck\"></fa-icon>\n  </button>\n  <button (click)=\"onInfoClick()\"\n          [style.opacity]=\"isInfoClicked? '1' : '.5' \"\n          [style.border-radius]=\"isInfoClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isInfoClicked? '150px' : '45px'\"\n          class=\"info-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">Info </span><fa-icon [icon]=\"faInfoCircle\"></fa-icon>\n  </button>\n  <button (click)=\"onHelpClick()\"\n          [style.opacity]=\"isHelpClicked? '1' : '.5' \"\n          [style.border-radius]=\"isHelpClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isHelpClicked? '150px' : '45px'\"\n          class=\"help-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isInfoClicked\">Help </span><fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\n  </button>\n  <div class=\"landing-header-card\" [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view login\">\n      <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n        <input class=\"login-input\" type=\"email\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"credentials.email\" required>\n        <label>email</label>\n        <input class=\"login-input\" type=\"password\" name=\"pwd\" [(ngModel)]=\"credentials.pwd\" required>\n        <label>password</label>\n        <div [hidden]=\"!passwordHasError\" class=\"alert alert-error\" role=\"alert\">\n          {{passwordErrorString}}\n        </div>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faSignInAlt\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view signup\">\n      <form (ngSubmit)=\"s.form.valid && signup()\" #s=\"ngForm\" novalidate id=\"signup-form\">\n        <input type=\"text\" class=\"signup-input\" name=\"name\" [(ngModel)]=\"signupCredentials.name\" required>\n        <label>name</label>\n        <input type=\"email\" class=\"signup-input\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"signupCredentials.email\" required>\n        <label>email</label>\n        <input type=\"password\" class=\"form-control signup-input\" name=\"pwd\" [(ngModel)]=\"signupCredentials.pwd\" required>\n        <label>password</label>\n        <input type=\"text\" class=\"signup-input\" name=\"phone\" [(ngModel)]=\"signupCredentials.phone\" required>\n        <label>phone</label>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faClipboardCheck\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view info\">\n      This is the information view with some random text that can show the size of the modal dialog\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isInfoClicked || isSignupClicked || isLoginClicked\">\n    <div class=\"landing-header-card-view help\">\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      </form>\n    </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing-header/landing-header.component.scss":
+/*!*******************************************************************************!*\
+  !*** ./client/app/views/landing/landing-header/landing-header.component.scss ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing-header {\n  float: right; }\n.landing-header .login-tab {\n    background-color: #91c7b1; }\n.landing-header .info-tab {\n    background-color: #5e7ce2; }\n.landing-header .help-tab {\n    background-color: #f7934c; }\n.landing-header button {\n    font-family: \"Courier\", Times, serif;\n    float: right;\n    margin: 10px 0px 0px 0px;\n    padding: 5px 5px 5px 5px;\n    color: #222222;\n    border: none;\n    box-shadow: -3px -1px 10px #222222; }\n.landing-header button.signup-tab {\n      background-color: #fdf5bf; }\n.landing-header button:hover {\n      opacity: .75;\n      color: #222222; }\n.landing-header-card {\n    height: 222px; }\n.landing-header-card-view {\n      width: 329px;\n      float: right;\n      border-radius: .25rem 0 .25rem .25rem;\n      z-index: 1;\n      border: none;\n      padding: .75rem .75rem .5rem .75rem;\n      box-shadow: -5px 5px 10px #222222;\n      position: absolute;\n      top: 39px;\n      right: 15px; }\n.landing-header-card-view.login {\n        background-color: #ebf4f0; }\n.landing-header-card-view.signup {\n        background-color: #fcfaea; }\n.landing-header-card-view.info {\n        background-color: #99b2e2; }\n.landing-header-card-view.help {\n        background-color: #fac49d; }\n.landing-header-card-view button {\n        margin: 0px 0px 0px 0px;\n        background-color: transparent;\n        box-shadow: unset; }\n.landing-header-card-view form input {\n        width: 100%;\n        font-size: 13px; }\n.landing-header-card-view form input.login-input {\n          background-color: #ebf4f0;\n          border: 0px;\n          border-bottom: 1px solid #91c7b1; }\n.landing-header-card-view form input.signup-input {\n          background-color: #fcfaea;\n          border: 0px;\n          border-bottom: 1px solid #fdf5bf; }\n.landing-header-card-view form label {\n        font-family: \"Courier\", Times, serif;\n        margin-bottom: 0; }\n"
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing-header/landing-header.component.ts":
+/*!*****************************************************************************!*\
+  !*** ./client/app/views/landing/landing-header/landing-header.component.ts ***!
+  \*****************************************************************************/
+/*! exports provided: LandingHeaderComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingHeaderComponent", function() { return LandingHeaderComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./client/app/services/auth.service.ts");
-/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/data.service */ "./client/app/services/data.service.ts");
+/* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../services/auth.service */ "./client/app/services/auth.service.ts");
+/* harmony import */ var _services_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/data.service */ "./client/app/services/data.service.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../environments/environment */ "./client/environments/environment.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../environments/environment */ "./client/environments/environment.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -567,8 +636,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].apiUrl;
-var LandingComponent = /** @class */ (function () {
-    function LandingComponent(router, auth, route, dataService, renderer, http) {
+var LandingHeaderComponent = /** @class */ (function () {
+    function LandingHeaderComponent(router, auth, route, dataService, renderer, http) {
         this.router = router;
         this.auth = auth;
         this.route = route;
@@ -589,16 +658,18 @@ var LandingComponent = /** @class */ (function () {
         this.isSignupClicked = false;
         this.isInfoClicked = false;
         this.isHelpClicked = false;
+        this.passwordHasError = false;
+        this.passwordErrorString = '';
         this.faSignInAlt = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faSignInAlt"];
         this.faClipboardCheck = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faClipboardCheck"];
         this.faQuestionCircle = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faQuestionCircle"];
         this.faInfoCircle = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faInfoCircle"];
     }
-    LandingComponent.prototype.ngOnInit = function () {
+    LandingHeaderComponent.prototype.ngOnInit = function () {
         this.returnURL = this.route.snapshot.queryParams['returnUrl'] || '/dashboard';
     };
-    //TODO NGSWITCH
-    LandingComponent.prototype.onSignupClick = function () {
+    // TODO NGSWITCH
+    LandingHeaderComponent.prototype.onSignupClick = function () {
         if (!this.isSignupClicked) {
             this.isSignupClicked = true;
             this.isHelpClicked = false;
@@ -606,7 +677,7 @@ var LandingComponent = /** @class */ (function () {
             this.isInfoClicked = false;
         }
     };
-    LandingComponent.prototype.onLoginClick = function () {
+    LandingHeaderComponent.prototype.onLoginClick = function () {
         if (!this.isLoginClicked) {
             this.isLoginClicked = true;
             this.isHelpClicked = false;
@@ -614,7 +685,7 @@ var LandingComponent = /** @class */ (function () {
             this.isInfoClicked = false;
         }
     };
-    LandingComponent.prototype.onInfoClick = function () {
+    LandingHeaderComponent.prototype.onInfoClick = function () {
         if (!this.isInfoClicked) {
             this.isInfoClicked = true;
             this.isHelpClicked = false;
@@ -622,7 +693,7 @@ var LandingComponent = /** @class */ (function () {
             this.isLoginClicked = false;
         }
     };
-    LandingComponent.prototype.onHelpClick = function () {
+    LandingHeaderComponent.prototype.onHelpClick = function () {
         if (!this.isHelpClicked) {
             this.isHelpClicked = true;
             this.isInfoClicked = false;
@@ -630,28 +701,23 @@ var LandingComponent = /** @class */ (function () {
             this.isSignupClicked = false;
         }
     };
-    LandingComponent.prototype.login = function () {
+    LandingHeaderComponent.prototype.login = function () {
         var _this = this;
         // We checked for validation in HTML so our credentials should not be blank.
         this.auth.login(this.credentials.email, this.credentials.pwd).subscribe(function (data) {
-            if (data.message === false) {
-                // if invalid login, reset the form
-                _this.credentials.email = '';
-                _this.credentials.pwd = '';
-            }
-            else {
-                // if we get here, there is no error, the return is valid
-                // Let's first save the info into local storage for later use. We can parse this back
-                // into an object later
+            if (data.message) {
+                // User authenticated
                 _this.dataService.setCurrentUser(data);
                 // route user to the return URL
                 setTimeout(function () {
                     _this.router.navigateByUrl(_this.returnURL);
                 }, 10);
             }
+        }, function (error) {
+            console.log(error);
         });
     };
-    LandingComponent.prototype.signup = function () {
+    LandingHeaderComponent.prototype.signup = function () {
         var _this = this;
         this.http.post(APIEndpoint + 'users', {
             name: this.signupCredentials.name,
@@ -685,13 +751,75 @@ var LandingComponent = /** @class */ (function () {
             // add bootstrap alert
         });
     };
+    LandingHeaderComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-landing-header',
+            template: __webpack_require__(/*! ./landing-header.component.html */ "./client/app/views/landing/landing-header/landing-header.component.html"),
+            styles: [__webpack_require__(/*! ./landing-header.component.scss */ "./client/app/views/landing/landing-header/landing-header.component.scss")]
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+    ], LandingHeaderComponent);
+    return LandingHeaderComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing.component.html":
+/*!*********************************************************!*\
+  !*** ./client/app/views/landing/landing.component.html ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"landing\" #loginElem>\n  <app-landing-header></app-landing-header>\n  <app-landing-footer></app-landing-footer>\n</div>\n"
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing.component.scss":
+/*!*********************************************************!*\
+  !*** ./client/app/views/landing/landing.component.scss ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 400px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n"
+
+/***/ }),
+
+/***/ "./client/app/views/landing/landing.component.ts":
+/*!*******************************************************!*\
+  !*** ./client/app/views/landing/landing.component.ts ***!
+  \*******************************************************/
+/*! exports provided: LandingComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingComponent", function() { return LandingComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var LandingComponent = /** @class */ (function () {
+    function LandingComponent() {
+    }
+    LandingComponent.prototype.ngOnInit = function () { };
     LandingComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-login',
             template: __webpack_require__(/*! ./landing.component.html */ "./client/app/views/landing/landing.component.html"),
             styles: [__webpack_require__(/*! ./landing.component.scss */ "./client/app/views/landing/landing.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+        __metadata("design:paramtypes", [])
     ], LandingComponent);
     return LandingComponent;
 }());
