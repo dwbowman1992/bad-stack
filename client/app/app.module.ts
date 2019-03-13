@@ -12,6 +12,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {LandingComponent} from './views/landing/landing.component';
 import { LandingHeaderComponent } from './views/landing/landing-header/landing-header.component';
 import { LandingFooterComponent } from './views/landing/landing-footer/landing-footer.component';
+import { DashboardNavbarComponent } from './views/dashboard/dashboard-navbar/dashboard-navbar.component';
+import { UserComponent } from './views/user/user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { LandingFooterComponent } from './views/landing/landing-footer/landing-f
     LandingComponent,
     TypewriterDirective,
     LandingHeaderComponent,
-    LandingFooterComponent
+    LandingFooterComponent,
+    DashboardNavbarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

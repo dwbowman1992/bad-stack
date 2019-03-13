@@ -1,0 +1,15 @@
+@import '../../../../styles';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #2222221a;
+  font-family: $APP_FONT;
+  & h1 {
+    font-family: $APP_FONT;
+    display: inline;
+    margin: 10px 0 10px 0;
+    font-size: 30px;
+    color: $LOGO_FONT_COLOR;
+  }
+}

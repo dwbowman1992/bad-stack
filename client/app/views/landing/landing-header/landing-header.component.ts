@@ -32,8 +32,9 @@ export class LandingHeaderComponent implements OnInit {
   isSignupClicked = false;
   isInfoClicked = false;
   isHelpClicked = false;
-  passwordHasError = false;
-  passwordErrorString = '';
+  loginHasError = false;
+  loginError = '';
+
   returnURL: string;
 
   faSignInAlt = faSignInAlt;
@@ -85,16 +86,26 @@ export class LandingHeaderComponent implements OnInit {
   login() {
     // We checked for validation in HTML so our credentials should not be blank.
     this.auth.login(this.credentials.email, this.credentials.pwd).subscribe((data: any ) => {
-      if (data.message) {
+      if (data.status === 200) {
         // User authenticated
         this.dataService.setCurrentUser(data);
         // route user to the return URL
         setTimeout( () => {
           this.router.navigateByUrl(this.returnURL);
         }, 10);
+      } else {
+        this.credentials.email = '';
+        this.credentials.pwd = '';
+        if (data.status === 401) {
+          this.loginHasError = true;
+          this.loginError = data.message;
+        }
       }
     }, (error) => {
-      console.log(error);
+      this.credentials.email = '';
+      this.credentials.pwd = '';
+      this.loginHasError = true;
+      this.loginError = 'Unexpected Error';
     });
   }
 
@@ -108,8 +119,10 @@ export class LandingHeaderComponent implements OnInit {
       this.auth.login(this.signupCredentials.email, this.signupCredentials.pwd).subscribe((data: any ) => {
         if (data.message === false) {
           // if invalid login, reset the form
-          this.credentials.email = '';
-          this.credentials.pwd = '';
+          this.signupCredentials.name = '';
+          this.signupCredentials.email = '';
+          this.signupCredentials.pwd = '';
+          this.signupCredentials.phone = '';
         } else {
           // if we get here, there is no error, the return is valid
           // Let's first save the info into local storage for later use. We can parse this back

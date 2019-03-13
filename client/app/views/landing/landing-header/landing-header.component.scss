@@ -35,7 +35,7 @@
       border-radius: .25rem 0 .25rem .25rem;
       z-index: 1;
       border:none;
-      padding: .75rem .75rem .5rem .75rem;
+      padding: 1rem 1rem .5rem 1rem;
       box-shadow: -5px 5px 10px $NERO_COLOR;
       position: absolute;
       top:39px;
@@ -53,7 +53,7 @@
         background-color: $LIGHT_ORANGE_COLOR;
       }
       & button {
-        margin: 0px 0px 0px 0px;
+        margin: 10px 0px 0px 0px;
         background-color: transparent;
         box-shadow: unset;
       }
@@ -73,7 +73,7 @@
       }
       & form label {
         font-family: $APP_FONT;
-        margin-bottom: 0;
+        padding-bottom: 10px;
       }
     }
   }

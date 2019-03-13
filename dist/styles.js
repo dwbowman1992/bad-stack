@@ -160,7 +160,7 @@ module.exports = "/* .bs-datepicker */\n.bs-datepicker {\n  display: flex;\n  al
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n"
 
 /***/ }),
 

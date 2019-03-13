@@ -156,12 +156,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./views/landing/landing.component */ "./client/app/views/landing/landing.component.ts");
 /* harmony import */ var _views_landing_landing_header_landing_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./views/landing/landing-header/landing-header.component */ "./client/app/views/landing/landing-header/landing-header.component.ts");
 /* harmony import */ var _views_landing_landing_footer_landing_footer_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./views/landing/landing-footer/landing-footer.component */ "./client/app/views/landing/landing-footer/landing-footer.component.ts");
+/* harmony import */ var _views_dashboard_dashboard_navbar_dashboard_navbar_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./views/dashboard/dashboard-navbar/dashboard-navbar.component */ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.ts");
+/* harmony import */ var _views_user_user_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./views/user/user.component */ "./client/app/views/user/user.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -186,7 +190,9 @@ var AppModule = /** @class */ (function () {
                 _views_landing_landing_component__WEBPACK_IMPORTED_MODULE_10__["LandingComponent"],
                 _directives_typewriter_directive__WEBPACK_IMPORTED_MODULE_8__["TypewriterDirective"],
                 _views_landing_landing_header_landing_header_component__WEBPACK_IMPORTED_MODULE_11__["LandingHeaderComponent"],
-                _views_landing_landing_footer_landing_footer_component__WEBPACK_IMPORTED_MODULE_12__["LandingFooterComponent"]
+                _views_landing_landing_footer_landing_footer_component__WEBPACK_IMPORTED_MODULE_12__["LandingFooterComponent"],
+                _views_dashboard_dashboard_navbar_dashboard_navbar_component__WEBPACK_IMPORTED_MODULE_13__["DashboardNavbarComponent"],
+                _views_user_user_component__WEBPACK_IMPORTED_MODULE_14__["UserComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -421,6 +427,70 @@ var DataService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.html":
+/*!*************************************************************************************!*\
+  !*** ./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.html ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<nav class=\"navbar navbar-expand-lg navbar-light\">\n  <h1 class=\"navbar-brand\">{{ title }}</h1>\n  <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item active\">\n        <a class=\"nav-link\" href=\"/dashboard\">Home <span class=\"sr-only\">(current)</span></a>\n      </li>\n      <li class=\"nav-item dropdown\">\n        <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n          User\n        </a>\n        <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n          <a class=\"dropdown-item\">Add User Picture Here</a>\n          <div class=\"dropdown-divider\"></div>\n          <a class=\"dropdown-item\">Settings</a>\n        </div>\n      </li>\n    </ul>\n  </div>\n</nav>\n"
+
+/***/ }),
+
+/***/ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.scss":
+/*!*************************************************************************************!*\
+  !*** ./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.scss ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n.navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  background-color: #2222221a;\n  font-family: \"Courier\", Times, serif; }\n.navbar h1 {\n    font-family: \"Courier\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px;\n    color: #cbd2d9; }\n"
+
+/***/ }),
+
+/***/ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.ts":
+/*!***********************************************************************************!*\
+  !*** ./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.ts ***!
+  \***********************************************************************************/
+/*! exports provided: DashboardNavbarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashboardNavbarComponent", function() { return DashboardNavbarComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DashboardNavbarComponent = /** @class */ (function () {
+    function DashboardNavbarComponent() {
+        this.title = 'T-Stack';
+    }
+    DashboardNavbarComponent.prototype.ngOnInit = function () {
+    };
+    DashboardNavbarComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-dashboard-navbar',
+            template: __webpack_require__(/*! ./dashboard-navbar.component.html */ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.html"),
+            styles: [__webpack_require__(/*! ./dashboard-navbar.component.scss */ "./client/app/views/dashboard/dashboard-navbar/dashboard-navbar.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DashboardNavbarComponent);
+    return DashboardNavbarComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./client/app/views/dashboard/dashboard.component.html":
 /*!*************************************************************!*\
   !*** ./client/app/views/dashboard/dashboard.component.html ***!
@@ -428,7 +498,7 @@ var DataService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg navbar-light\">\n    <h1 class=\"navbar-brand\">{{ title }}</h1>\n    <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navbarSupportedContent\">\n      <span class=\"navbar-toggler-icon\"></span>\n    </button>\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\n      <ul class=\"navbar-nav mr-auto\">\n        <li class=\"nav-item active\">\n          <a class=\"nav-link\" href=\"/dashboard\">Home <span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li class=\"nav-item dropdown\">\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            User\n          </a>\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\n            <a class=\"dropdown-item\">Add User Picture Here</a>\n            <div class=\"dropdown-divider\"></div>\n            <a class=\"dropdown-item\">Settings</a>\n          </div>\n        </li>\n      </ul>\n    </div>\n  </nav>\n  <div id=\"dashboard-content\">\n    Dashboard  Content\n  </div>\n</div>\n"
+module.exports = "<div id=\"dashboard\">\n  <app-dashboard-navbar></app-dashboard-navbar>\n  <div id=\"dashboard-content\">\n    Dashboard  Content\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -439,7 +509,7 @@ module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n#dashboard {\n  width: 100vw;\n  height: 100em;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n#dashboard h1 {\n    font-family: \"Courier\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px;\n    color: #cbd2d9; }\n.navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  background-color: #2222221a; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n#dashboard {\n  width: 100vw;\n  height: 100em;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n#dashboard-content {\n    padding: 0px 16px 0px 16px; }\n"
 
 /***/ }),
 
@@ -478,7 +548,6 @@ var DashboardComponent = /** @class */ (function () {
         var _this = this;
         this.dataservice = dataservice;
         this.http = http;
-        this.title = 'BadStack';
         this.tokenInterval = Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["interval"])(100000).subscribe(function (x) {
             _this.checkToken();
         });
@@ -524,7 +593,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-footer-logo\">\n    <span><h2 #typewriter>|</h2></span><h1 appTypewriter=\"T-Stack\"></h1>\n  </div>\n  <div class=\"col-sm landing-footer-info\">\n    <p>@Copyright2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-footer-logo\">\n    <span><h2 #typewriter>|</h2></span><h1 appTypewriter=\"T-Stack\"></h1>\n  </div>\n  <div class=\"col-sm landing-footer-info\">\n    <p>@2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -535,7 +604,7 @@ module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing-footer-info {\n  text-align: center;\n  position: absolute;\n  bottom: 10px; }\n.landing-footer-info p {\n    font-size: 8px;\n    margin-bottom: 0px;\n    color: #e0e1dd; }\n.landing-footer-logo {\n  border-bottom: 1px solid #cbd2d9;\n  position: absolute;\n  min-width: 400px;\n  bottom: 145px;\n  text-align: left; }\n.landing-footer-logo h1 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 72px;\n    float: right;\n    color: #cbd2d9; }\n.landing-footer-logo h2 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 60px;\n    float: right;\n    color: #222222; }\n.blink-on {\n  opacity: 1; }\n.blink-off {\n  opacity: .5; }\n/* typewriter effect */\n.typewriter {\n  animation-name: blink-caret;\n  animation-iteration-count: infinite;\n  animation-duration: .5s;\n  animation-timing-function: linear;\n  -webkit-animation-name: blink-caret;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-duration: .5s;\n  -webkit-animation-timing-function: linear; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n.landing-footer-info {\n  text-align: center;\n  position: absolute;\n  bottom: 10px; }\n.landing-footer-info p {\n    font-size: 8px;\n    margin-bottom: 0px;\n    color: #e0e1dd; }\n.landing-footer-logo {\n  border-bottom: 1px solid #cbd2d9;\n  position: absolute;\n  min-width: 400px;\n  bottom: 145px;\n  text-align: left; }\n.landing-footer-logo h1 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 72px;\n    float: right;\n    color: #cbd2d9;\n    margin-bottom: 0px; }\n.landing-footer-logo h2 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 60px;\n    float: right;\n    color: #222222; }\n.blink-on {\n  opacity: 1; }\n.blink-off {\n  opacity: .5; }\n"
 
 /***/ }),
 
@@ -610,7 +679,7 @@ var LandingFooterComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing-header col-sm\">\n  <button (click)=\"onLoginClick()\"\n          [style.opacity]=\"isLoginClicked? '1' : '.5' \"\n          [style.border-radius]=\"isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isLoginClicked? '150px' : '45px'\"\n          class=\"login-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">Login </span><fa-icon [icon]=\"faSignInAlt\"></fa-icon>\n  </button>\n  <button (click)=\"onSignupClick()\"\n          [style.opacity]=\"isSignupClicked? '1' : '.5' \"\n          [style.border-radius]=\"isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isSignupClicked? '150px' : '45px'\"\n          class=\"signup-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">Sign Up </span><fa-icon [icon]=\"faClipboardCheck\"></fa-icon>\n  </button>\n  <button (click)=\"onInfoClick()\"\n          [style.opacity]=\"isInfoClicked? '1' : '.5' \"\n          [style.border-radius]=\"isInfoClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isInfoClicked? '150px' : '45px'\"\n          class=\"info-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">Info </span><fa-icon [icon]=\"faInfoCircle\"></fa-icon>\n  </button>\n  <button (click)=\"onHelpClick()\"\n          [style.opacity]=\"isHelpClicked? '1' : '.5' \"\n          [style.border-radius]=\"isHelpClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isHelpClicked? '150px' : '45px'\"\n          class=\"help-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isInfoClicked\">Help </span><fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\n  </button>\n  <div class=\"landing-header-card\" [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view login\">\n      <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n        <input class=\"login-input\" type=\"email\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"credentials.email\" required>\n        <label>email</label>\n        <input class=\"login-input\" type=\"password\" name=\"pwd\" [(ngModel)]=\"credentials.pwd\" required>\n        <label>password</label>\n        <div [hidden]=\"!passwordHasError\" class=\"alert alert-error\" role=\"alert\">\n          {{passwordErrorString}}\n        </div>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faSignInAlt\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view signup\">\n      <form (ngSubmit)=\"s.form.valid && signup()\" #s=\"ngForm\" novalidate id=\"signup-form\">\n        <input type=\"text\" class=\"signup-input\" name=\"name\" [(ngModel)]=\"signupCredentials.name\" required>\n        <label>name</label>\n        <input type=\"email\" class=\"signup-input\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"signupCredentials.email\" required>\n        <label>email</label>\n        <input type=\"password\" class=\"form-control signup-input\" name=\"pwd\" [(ngModel)]=\"signupCredentials.pwd\" required>\n        <label>password</label>\n        <input type=\"text\" class=\"signup-input\" name=\"phone\" [(ngModel)]=\"signupCredentials.phone\" required>\n        <label>phone</label>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faClipboardCheck\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view info\">\n      This is the information view with some random text that can show the size of the modal dialog\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isInfoClicked || isSignupClicked || isLoginClicked\">\n    <div class=\"landing-header-card-view help\">\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      </form>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"landing-header col-sm\">\n  <button (click)=\"onLoginClick()\"\n          [style.opacity]=\"isLoginClicked? '1' : '.5' \"\n          [style.border-radius]=\"isLoginClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isLoginClicked? '150px' : '45px'\"\n          class=\"login-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">Login </span><fa-icon [icon]=\"faSignInAlt\"></fa-icon>\n  </button>\n  <button (click)=\"onSignupClick()\"\n          [style.opacity]=\"isSignupClicked? '1' : '.5' \"\n          [style.border-radius]=\"isSignupClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 0' \"\n          [style.width]=\"isSignupClicked? '150px' : '45px'\"\n          class=\"signup-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">Sign Up </span><fa-icon [icon]=\"faClipboardCheck\"></fa-icon>\n  </button>\n  <button (click)=\"onInfoClick()\"\n          [style.opacity]=\"isInfoClicked? '1' : '.5' \"\n          [style.border-radius]=\"isInfoClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isInfoClicked? '150px' : '45px'\"\n          class=\"info-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">Info </span><fa-icon [icon]=\"faInfoCircle\"></fa-icon>\n  </button>\n  <button (click)=\"onHelpClick()\"\n          [style.opacity]=\"isHelpClicked? '1' : '.5' \"\n          [style.border-radius]=\"isHelpClicked ? '.25rem .25rem 0 0' : '.25rem .25rem 0 .25rem' \"\n          [style.width]=\"isHelpClicked? '150px' : '45px'\"\n          class=\"help-tab btn btn-primary btn-sm\">\n    <span [hidden]=\"isLoginClicked || isSignupClicked || isInfoClicked\">Help </span><fa-icon [icon]=\"faQuestionCircle\"></fa-icon>\n  </button>\n  <div class=\"landing-header-card\" [hidden]=\"isSignupClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view login\">\n      <form (ngSubmit)=\"f.form.valid && login()\" #f=\"ngForm\" novalidate>\n        <input class=\"login-input\" type=\"email\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"credentials.email\" required>\n        <label>email</label>\n        <input class=\"login-input\" type=\"password\" name=\"pwd\" [(ngModel)]=\"credentials.pwd\" required>\n        <label>password</label>\n        <div [hidden]=\"!loginHasError\" class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">\n          <strong>{{loginError}}</strong>\n          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n            <span aria-hidden=\"true\">&times;</span>\n          </button>\n        </div>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faSignInAlt\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isInfoClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view signup\">\n      <form (ngSubmit)=\"s.form.valid && signup()\" #s=\"ngForm\" novalidate id=\"signup-form\">\n        <input type=\"text\" class=\"signup-input\" name=\"name\" [(ngModel)]=\"signupCredentials.name\" required>\n        <label>name</label>\n        <input type=\"email\" class=\"signup-input\" name=\"email\" aria-describedby=\"email\" [(ngModel)]=\"signupCredentials.email\" required>\n        <label>email</label>\n        <input type=\"password\" class=\"form-control signup-input\" name=\"pwd\" [(ngModel)]=\"signupCredentials.pwd\" required>\n        <label>password</label>\n        <input type=\"text\" class=\"signup-input\" name=\"phone\" [(ngModel)]=\"signupCredentials.phone\" required>\n        <label>phone</label>\n        <button type=\"submit\" class=\"btn btn-primary btn-sm\"><fa-icon [icon]=\"faClipboardCheck\"></fa-icon></button>\n      </form>\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isLoginClicked || isSignupClicked || isHelpClicked\">\n    <div class=\"landing-header-card-view info\">\n      This is the information view with some random text that can show the size of the modal dialog\n    </div>\n  </div>\n  <div class=\"landing-header-card\" [hidden]=\"isInfoClicked || isSignupClicked || isLoginClicked\">\n    <div class=\"landing-header-card-view help\">\n      <form class=\"form-inline my-2 my-lg-0\">\n        <input class=\"form-control mr-sm-2\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">\n      </form>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -621,7 +690,7 @@ module.exports = "<div class=\"landing-header col-sm\">\n  <button (click)=\"onL
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing-header {\n  float: right; }\n.landing-header .login-tab {\n    background-color: #91c7b1; }\n.landing-header .info-tab {\n    background-color: #5e7ce2; }\n.landing-header .help-tab {\n    background-color: #f7934c; }\n.landing-header button {\n    font-family: \"Courier\", Times, serif;\n    float: right;\n    margin: 10px 0px 0px 0px;\n    padding: 5px 5px 5px 5px;\n    color: #222222;\n    border: none;\n    box-shadow: -3px -1px 10px #222222; }\n.landing-header button.signup-tab {\n      background-color: #fdf5bf; }\n.landing-header button:hover {\n      opacity: .75;\n      color: #222222; }\n.landing-header-card {\n    height: 222px; }\n.landing-header-card-view {\n      width: 329px;\n      float: right;\n      border-radius: .25rem 0 .25rem .25rem;\n      z-index: 1;\n      border: none;\n      padding: .75rem .75rem .5rem .75rem;\n      box-shadow: -5px 5px 10px #222222;\n      position: absolute;\n      top: 39px;\n      right: 15px; }\n.landing-header-card-view.login {\n        background-color: #ebf4f0; }\n.landing-header-card-view.signup {\n        background-color: #fcfaea; }\n.landing-header-card-view.info {\n        background-color: #99b2e2; }\n.landing-header-card-view.help {\n        background-color: #fac49d; }\n.landing-header-card-view button {\n        margin: 0px 0px 0px 0px;\n        background-color: transparent;\n        box-shadow: unset; }\n.landing-header-card-view form input {\n        width: 100%;\n        font-size: 13px; }\n.landing-header-card-view form input.login-input {\n          background-color: #ebf4f0;\n          border: 0px;\n          border-bottom: 1px solid #91c7b1; }\n.landing-header-card-view form input.signup-input {\n          background-color: #fcfaea;\n          border: 0px;\n          border-bottom: 1px solid #fdf5bf; }\n.landing-header-card-view form label {\n        font-family: \"Courier\", Times, serif;\n        margin-bottom: 0; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n.landing-header {\n  float: right; }\n.landing-header .login-tab {\n    background-color: #91c7b1; }\n.landing-header .info-tab {\n    background-color: #5e7ce2; }\n.landing-header .help-tab {\n    background-color: #f7934c; }\n.landing-header button {\n    font-family: \"Courier\", Times, serif;\n    float: right;\n    margin: 10px 0px 0px 0px;\n    padding: 5px 5px 5px 5px;\n    color: #222222;\n    border: none;\n    box-shadow: -3px -1px 10px #222222; }\n.landing-header button.signup-tab {\n      background-color: #fffc78; }\n.landing-header button:hover {\n      opacity: .75;\n      color: #222222; }\n.landing-header-card {\n    height: 222px; }\n.landing-header-card-view {\n      width: 329px;\n      float: right;\n      border-radius: .25rem 0 .25rem .25rem;\n      z-index: 1;\n      border: none;\n      padding: 1rem 1rem .5rem 1rem;\n      box-shadow: -5px 5px 10px #222222;\n      position: absolute;\n      top: 39px;\n      right: 15px; }\n.landing-header-card-view.login {\n        background-color: #ebf4f0; }\n.landing-header-card-view.signup {\n        background-color: #fcfaea; }\n.landing-header-card-view.info {\n        background-color: #99b2e2; }\n.landing-header-card-view.help {\n        background-color: #fac49d; }\n.landing-header-card-view button {\n        margin: 10px 0px 0px 0px;\n        background-color: transparent;\n        box-shadow: unset; }\n.landing-header-card-view form input {\n        width: 100%;\n        font-size: 13px; }\n.landing-header-card-view form input.login-input {\n          background-color: #ebf4f0;\n          border: 0px;\n          border-bottom: 1px solid #91c7b1; }\n.landing-header-card-view form input.signup-input {\n          background-color: #fcfaea;\n          border: 0px;\n          border-bottom: 1px solid #fffc78; }\n.landing-header-card-view form label {\n        font-family: \"Courier\", Times, serif;\n        padding-bottom: 10px; }\n"
 
 /***/ }),
 
@@ -680,8 +749,8 @@ var LandingHeaderComponent = /** @class */ (function () {
         this.isSignupClicked = false;
         this.isInfoClicked = false;
         this.isHelpClicked = false;
-        this.passwordHasError = false;
-        this.passwordErrorString = '';
+        this.loginHasError = false;
+        this.loginError = '';
         this.faSignInAlt = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faSignInAlt"];
         this.faClipboardCheck = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faClipboardCheck"];
         this.faQuestionCircle = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__["faQuestionCircle"];
@@ -727,7 +796,7 @@ var LandingHeaderComponent = /** @class */ (function () {
         var _this = this;
         // We checked for validation in HTML so our credentials should not be blank.
         this.auth.login(this.credentials.email, this.credentials.pwd).subscribe(function (data) {
-            if (data.message) {
+            if (data.status === 200) {
                 // User authenticated
                 _this.dataService.setCurrentUser(data);
                 // route user to the return URL
@@ -735,8 +804,19 @@ var LandingHeaderComponent = /** @class */ (function () {
                     _this.router.navigateByUrl(_this.returnURL);
                 }, 10);
             }
+            else {
+                _this.credentials.email = '';
+                _this.credentials.pwd = '';
+                if (data.status === 401) {
+                    _this.loginHasError = true;
+                    _this.loginError = data.message;
+                }
+            }
         }, function (error) {
-            console.log(error);
+            _this.credentials.email = '';
+            _this.credentials.pwd = '';
+            _this.loginHasError = true;
+            _this.loginError = 'Unexpected Error';
         });
     };
     LandingHeaderComponent.prototype.signup = function () {
@@ -750,8 +830,10 @@ var LandingHeaderComponent = /** @class */ (function () {
             _this.auth.login(_this.signupCredentials.email, _this.signupCredentials.pwd).subscribe(function (data) {
                 if (data.message === false) {
                     // if invalid login, reset the form
-                    _this.credentials.email = '';
-                    _this.credentials.pwd = '';
+                    _this.signupCredentials.name = '';
+                    _this.signupCredentials.email = '';
+                    _this.signupCredentials.pwd = '';
+                    _this.signupCredentials.phone = '';
                 }
                 else {
                     // if we get here, there is no error, the return is valid
@@ -806,7 +888,7 @@ module.exports = "<div class=\"landing\" #loginElem>\n  <app-landing-header></ap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 400px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-danger {\n  background-color: #c88385;\n  color: white;\n  text-align: left;\n  font-size: 14px;\n  border: 0px;\n  margin-bottom: 0px; }\n.alert-danger button {\n    opacity: 1;\n    color: white !important;\n    margin-top: 7px !important; }\n.landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 400px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n"
 
 /***/ }),
 
@@ -844,6 +926,69 @@ var LandingComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [])
     ], LandingComponent);
     return LandingComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./client/app/views/user/user.component.html":
+/*!***************************************************!*\
+  !*** ./client/app/views/user/user.component.html ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  user works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./client/app/views/user/user.component.scss":
+/*!***************************************************!*\
+  !*** ./client/app/views/user/user.component.scss ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./client/app/views/user/user.component.ts":
+/*!*************************************************!*\
+  !*** ./client/app/views/user/user.component.ts ***!
+  \*************************************************/
+/*! exports provided: UserComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserComponent", function() { return UserComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var UserComponent = /** @class */ (function () {
+    function UserComponent() {
+    }
+    UserComponent.prototype.ngOnInit = function () {
+    };
+    UserComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-user',
+            template: __webpack_require__(/*! ./user.component.html */ "./client/app/views/user/user.component.html"),
+            styles: [__webpack_require__(/*! ./user.component.scss */ "./client/app/views/user/user.component.scss")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], UserComponent);
+    return UserComponent;
 }());
 
 
