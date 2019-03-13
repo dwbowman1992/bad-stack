@@ -16,7 +16,7 @@ export class TypewriterDirective implements OnInit {
       setTimeout(() => {
         this.el.nativeElement.innerText += tempText.shift();
         this.typewriter(tempText);
-      }, 500);
+      }, 600);
     }
   }
 }

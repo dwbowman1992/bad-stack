@@ -14,7 +14,7 @@ const APIEndpoint = environment.apiUrl;
   styleUrls: ['./landing-header.component.scss']
 })
 export class LandingHeaderComponent implements OnInit {
-  constructor(private router: Router, private auth: AuthService, private route: ActivatedRoute, private dataService: DataService, private renderer: Renderer2, private http: HttpClient) { }
+  constructor(private router: Router, private auth: AuthService, private route: ActivatedRoute, private dataService: DataService, private http: HttpClient) { }
 
   credentials: any = {
     email: '',
