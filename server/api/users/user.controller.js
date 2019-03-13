@@ -97,8 +97,10 @@ function login(req, res) {
     if (!user) {
       // Return false, user not even registered, but let's not tell them.
       res.send({
-        message: false
+        message: 'Username/Password Incorrect',
+        status: 401
       });
+      return;
     }
     user.authenticate(req.body.password, function (authErr, authenticated) {
       if (authErr) {
@@ -107,7 +109,8 @@ function login(req, res) {
       if (!authenticated) {
         // Return false, password invalid
         res.send({
-          message: false
+          message: 'Username/Password Incorrect',
+          status: 401
         });
       } else {
         // User is authenticated, let's created a webtoken
@@ -124,7 +127,8 @@ function login(req, res) {
           name: user.name,
           email: user.email,
           role: user.role,
-          message: true
+          status: 200,
+          message: 'Login Authenticated'
         });
       }
     });

@@ -22,6 +22,7 @@
       font-size: 72px;
       float:right;
       color: $LOGO_FONT_COLOR;
+      margin-bottom:0px;
     }
     & h2 {
       font-family: $APP_FONT;
@@ -37,28 +38,4 @@
 }
 .blink-off {
   opacity: .5;
-}
-
-/* typewriter effect */
-.typewriter {
-  animation-name: blink-caret;
-  animation-iteration-count: infinite;
-  animation-duration: .5s;
-  animation-timing-function: linear;
-  -webkit-animation-name: blink-caret;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: .5s;
-  -webkit-animation-timing-function: linear;
-}
-
-@-webkit-keyframes blink-caret {
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes blink-caret {
-  100% {
-    opacity: 0;
-  }
 }

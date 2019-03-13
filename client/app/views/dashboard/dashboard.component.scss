@@ -4,20 +4,7 @@
   width: 100vw;
   height:100em;
   background-image: $APP_BACKGROUND;
-  & h1 {
-    font-family: $APP_FONT;
-    display: inline;
-    margin: 10px 0 10px 0;
-    font-size: 30px;
-    color: $LOGO_FONT_COLOR;
-  }
   &-content {
-
+    padding: 0px 16px 0px 16px;
   }
-}
-
-.navbar {
-  position: sticky;
-  top: 0;
-  background-color: #2222221a;
 }

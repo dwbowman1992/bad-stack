@@ -12,10 +12,12 @@ function isAuthenticated(req, res) {
   jwt.verify(req.query.token, config.secrets.session, function(err, decoded) {
     if (err) {
       res.send({
+        status: 401,
         authenticated: false
       })
     } else {
       res.send({
+        status: 200,
         authenticated: true
       })
     }

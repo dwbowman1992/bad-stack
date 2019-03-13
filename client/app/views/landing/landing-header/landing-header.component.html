@@ -34,8 +34,11 @@
         <label>email</label>
         <input class="login-input" type="password" name="pwd" [(ngModel)]="credentials.pwd" required>
         <label>password</label>
-        <div [hidden]="!passwordHasError" class="alert alert-error" role="alert">
-          {{passwordErrorString}}
+        <div [hidden]="!loginHasError" class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{loginError}}</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <button type="submit" class="btn btn-primary btn-sm"><fa-icon [icon]="faSignInAlt"></fa-icon></button>
       </form>

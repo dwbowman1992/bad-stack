@@ -14,8 +14,6 @@ const APIEndpoint = environment.apiUrl;
 })
 export class DashboardComponent implements OnInit {
 
-  title = 'BadStack';
-
   tokenInterval = interval(100000).subscribe(x => {
     this.checkToken();
   });
