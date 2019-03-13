@@ -244,7 +244,7 @@ var TypewriterDirective = /** @class */ (function () {
             setTimeout(function () {
                 _this.el.nativeElement.innerText += tempText.shift();
                 _this.typewriter(tempText);
-            }, 500);
+            }, 600);
         }
     };
     __decorate([
@@ -439,7 +439,7 @@ module.exports = "<div id=\"dashboard\">\n  <nav class=\"navbar navbar-expand-lg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n#dashboard {\n  width: 100vw;\n  height: 100em;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n#dashboard h1 {\n    font-family: \"Courier\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px;\n    color: #cbd2d9; }\n.navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0%;\n  background-color: #2222221a; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n#dashboard {\n  width: 100vw;\n  height: 100em;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n#dashboard h1 {\n    font-family: \"Courier\", Times, serif;\n    display: inline;\n    margin: 10px 0 10px 0;\n    font-size: 30px;\n    color: #cbd2d9; }\n.navbar {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n  background-color: #2222221a; }\n"
 
 /***/ }),
 
@@ -524,7 +524,7 @@ var DashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-footer-logo\">\n    <span class=\"typewriter\"><h2>|</h2></span><h1 appTypewriter=\"T-Stack\"></h1>\n  </div>\n  <div class=\"col-sm landing-footer-info\">\n    <p>@Copyright2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
+module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-footer-logo\">\n    <span><h2 #typewriter>|</h2></span><h1 appTypewriter=\"T-Stack\"></h1>\n  </div>\n  <div class=\"col-sm landing-footer-info\">\n    <p>@Copyright2019 v.1.0.0</p>\n    <p>(xxx)xxx-xxxx</p>\n    <p>Dylan Industries &#8482;</p>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -535,7 +535,7 @@ module.exports = "<div class=\"landing-footer\">\n  <div class=\"col-sm landing-
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing-footer-info {\n  text-align: center;\n  position: absolute;\n  bottom: 10px; }\n.landing-footer-info p {\n    font-size: 8px;\n    margin-bottom: 0px;\n    color: #e0e1dd; }\n.landing-footer-logo {\n  border-bottom: 1px solid #cbd2d9;\n  position: absolute;\n  min-width: 400px;\n  bottom: 145px;\n  text-align: left; }\n.landing-footer-logo h1 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 72px;\n    float: right;\n    color: #cbd2d9; }\n.landing-footer-logo h2 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 60px;\n    float: right;\n    color: #222222; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing-footer-info {\n  text-align: center;\n  position: absolute;\n  bottom: 10px; }\n.landing-footer-info p {\n    font-size: 8px;\n    margin-bottom: 0px;\n    color: #e0e1dd; }\n.landing-footer-logo {\n  border-bottom: 1px solid #cbd2d9;\n  position: absolute;\n  min-width: 400px;\n  bottom: 145px;\n  text-align: left; }\n.landing-footer-logo h1 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 72px;\n    float: right;\n    color: #cbd2d9; }\n.landing-footer-logo h2 {\n    font-family: \"Courier\", Times, serif;\n    font-size: 60px;\n    float: right;\n    color: #222222; }\n.blink-on {\n  opacity: 1; }\n.blink-off {\n  opacity: .5; }\n/* typewriter effect */\n.typewriter {\n  animation-name: blink-caret;\n  animation-iteration-count: infinite;\n  animation-duration: .5s;\n  animation-timing-function: linear;\n  -webkit-animation-name: blink-caret;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-duration: .5s;\n  -webkit-animation-timing-function: linear; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n"
 
 /***/ }),
 
@@ -550,6 +550,7 @@ module.exports = "/* You can add global styles to this file, and also import oth
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LandingFooterComponent", function() { return LandingFooterComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -560,18 +561,40 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LandingFooterComponent = /** @class */ (function () {
-    function LandingFooterComponent() {
+    function LandingFooterComponent(renderer) {
+        this.renderer = renderer;
+        this.currentState = 'initial';
     }
-    LandingFooterComponent.prototype.ngOnInit = function () {
+    LandingFooterComponent.prototype.changeState = function () {
+        this.currentState === 'initial' ? this.blinkOn() : this.blinkOff();
     };
+    LandingFooterComponent.prototype.blinkOn = function () {
+        this.typewriter.nativeElement.style.opacity = 0;
+        this.currentState = 'final';
+    };
+    LandingFooterComponent.prototype.blinkOff = function () {
+        this.typewriter.nativeElement.style.opacity = 1;
+        this.currentState = 'initial';
+    };
+    LandingFooterComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["interval"])(300).subscribe(function (x) {
+            _this.changeState();
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('typewriter'),
+        __metadata("design:type", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])
+    ], LandingFooterComponent.prototype, "typewriter", void 0);
     LandingFooterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-landing-footer',
             template: __webpack_require__(/*! ./landing-footer.component.html */ "./client/app/views/landing/landing-footer/landing-footer.component.html"),
             styles: [__webpack_require__(/*! ./landing-footer.component.scss */ "./client/app/views/landing/landing-footer/landing-footer.component.scss")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"]])
     ], LandingFooterComponent);
     return LandingFooterComponent;
 }());
@@ -598,7 +621,7 @@ module.exports = "<div class=\"landing-header col-sm\">\n  <button (click)=\"onL
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing-header {\n  float: right; }\n.landing-header .login-tab {\n    background-color: #91c7b1; }\n.landing-header .info-tab {\n    background-color: #5e7ce2; }\n.landing-header .help-tab {\n    background-color: #f7934c; }\n.landing-header button {\n    font-family: \"Courier\", Times, serif;\n    float: right;\n    margin: 10px 0px 0px 0px;\n    padding: 5px 5px 5px 5px;\n    color: #222222;\n    border: none;\n    box-shadow: -3px -1px 10px #222222; }\n.landing-header button.signup-tab {\n      background-color: #fdf5bf; }\n.landing-header button:hover {\n      opacity: .75;\n      color: #222222; }\n.landing-header-card {\n    height: 222px; }\n.landing-header-card-view {\n      width: 329px;\n      float: right;\n      border-radius: .25rem 0 .25rem .25rem;\n      z-index: 1;\n      border: none;\n      padding: .75rem .75rem .5rem .75rem;\n      box-shadow: -5px 5px 10px #222222;\n      position: absolute;\n      top: 39px;\n      right: 15px; }\n.landing-header-card-view.login {\n        background-color: #ebf4f0; }\n.landing-header-card-view.signup {\n        background-color: #fcfaea; }\n.landing-header-card-view.info {\n        background-color: #99b2e2; }\n.landing-header-card-view.help {\n        background-color: #fac49d; }\n.landing-header-card-view button {\n        margin: 0px 0px 0px 0px;\n        background-color: transparent;\n        box-shadow: unset; }\n.landing-header-card-view form input {\n        width: 100%;\n        font-size: 13px; }\n.landing-header-card-view form input.login-input {\n          background-color: #ebf4f0;\n          border: 0px;\n          border-bottom: 1px solid #91c7b1; }\n.landing-header-card-view form input.signup-input {\n          background-color: #fcfaea;\n          border: 0px;\n          border-bottom: 1px solid #fdf5bf; }\n.landing-header-card-view form label {\n        font-family: \"Courier\", Times, serif;\n        margin-bottom: 0; }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing-header {\n  float: right; }\n.landing-header .login-tab {\n    background-color: #91c7b1; }\n.landing-header .info-tab {\n    background-color: #5e7ce2; }\n.landing-header .help-tab {\n    background-color: #f7934c; }\n.landing-header button {\n    font-family: \"Courier\", Times, serif;\n    float: right;\n    margin: 10px 0px 0px 0px;\n    padding: 5px 5px 5px 5px;\n    color: #222222;\n    border: none;\n    box-shadow: -3px -1px 10px #222222; }\n.landing-header button.signup-tab {\n      background-color: #fdf5bf; }\n.landing-header button:hover {\n      opacity: .75;\n      color: #222222; }\n.landing-header-card {\n    height: 222px; }\n.landing-header-card-view {\n      width: 329px;\n      float: right;\n      border-radius: .25rem 0 .25rem .25rem;\n      z-index: 1;\n      border: none;\n      padding: .75rem .75rem .5rem .75rem;\n      box-shadow: -5px 5px 10px #222222;\n      position: absolute;\n      top: 39px;\n      right: 15px; }\n.landing-header-card-view.login {\n        background-color: #ebf4f0; }\n.landing-header-card-view.signup {\n        background-color: #fcfaea; }\n.landing-header-card-view.info {\n        background-color: #99b2e2; }\n.landing-header-card-view.help {\n        background-color: #fac49d; }\n.landing-header-card-view button {\n        margin: 0px 0px 0px 0px;\n        background-color: transparent;\n        box-shadow: unset; }\n.landing-header-card-view form input {\n        width: 100%;\n        font-size: 13px; }\n.landing-header-card-view form input.login-input {\n          background-color: #ebf4f0;\n          border: 0px;\n          border-bottom: 1px solid #91c7b1; }\n.landing-header-card-view form input.signup-input {\n          background-color: #fcfaea;\n          border: 0px;\n          border-bottom: 1px solid #fdf5bf; }\n.landing-header-card-view form label {\n        font-family: \"Courier\", Times, serif;\n        margin-bottom: 0; }\n"
 
 /***/ }),
 
@@ -637,12 +660,11 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var APIEndpoint = _environments_environment__WEBPACK_IMPORTED_MODULE_6__["environment"].apiUrl;
 var LandingHeaderComponent = /** @class */ (function () {
-    function LandingHeaderComponent(router, auth, route, dataService, renderer, http) {
+    function LandingHeaderComponent(router, auth, route, dataService, http) {
         this.router = router;
         this.auth = auth;
         this.route = route;
         this.dataService = dataService;
-        this.renderer = renderer;
         this.http = http;
         this.credentials = {
             email: '',
@@ -757,7 +779,7 @@ var LandingHeaderComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./landing-header.component.html */ "./client/app/views/landing/landing-header/landing-header.component.html"),
             styles: [__webpack_require__(/*! ./landing-header.component.scss */ "./client/app/views/landing/landing-header/landing-header.component.scss")]
         }),
-        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["Renderer2"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"], _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]])
     ], LandingHeaderComponent);
     return LandingHeaderComponent;
 }());
@@ -784,7 +806,7 @@ module.exports = "<div class=\"landing\" #loginElem>\n  <app-landing-header></ap
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n/* typewriter effect */\n.typewriter {\n  -webkit-animation: blink-caret .5s linear infinite;\n          animation: blink-caret .5s linear infinite; }\n@-webkit-keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n@keyframes blink-caret {\n  100% {\n    opacity: 0; } }\n.landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 400px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n"
+module.exports = "/* You can add global styles to this file, and also import other style files */\n/* alert */\n.alert-error {\n  background-color: #d36582;\n  color: #cbd2d9;\n  font-family: \"Courier\", Times, serif;\n  text-align: center; }\n.landing {\n  width: 100vw;\n  height: 100vh;\n  min-width: 400px;\n  min-height: 361px;\n  background-image: linear-gradient(to right, #415a77, #cbd2d9); }\n"
 
 /***/ }),
 

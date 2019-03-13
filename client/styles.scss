@@ -29,15 +29,3 @@ $DARK_RED_COLOR: #d36582;
     text-align: center;
   }
 }
-
-/* typewriter effect */
-.typewriter {
-  animation: blink-caret .5s linear infinite;
-}
-
-@keyframes blink-caret {
-  100% {
-    opacity: 0;
-  }
-}
-
