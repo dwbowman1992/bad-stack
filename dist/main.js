@@ -877,7 +877,7 @@ var LandingHeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing\" #loginElem>\n  <app-landing-header></app-landing-header>\n  <app-landing-footer></app-landing-footer>\n</div>\n"
+module.exports = "<div class=\"landing\" #loginElem>\n\tLanding Component\n  <app-landing-header></app-landing-header>\n  <app-landing-footer></app-landing-footer>\n</div>\n"
 
 /***/ }),
 
@@ -1057,7 +1057,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/dylanbowman/bad-stack/client/main.ts */"./client/main.ts");
+module.exports = __webpack_require__(/*! /Users/dylanbowman/Desktop/bad-stack/client/main.ts */"./client/main.ts");
 
 
 /***/ })

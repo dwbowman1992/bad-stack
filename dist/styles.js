@@ -662,10 +662,10 @@ module.exports = function (css) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/dylanbowman/bad-stack/node_modules/bootstrap/dist/css/bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
-__webpack_require__(/*! /Users/dylanbowman/bad-stack/node_modules/ngx-bootstrap/datepicker/bs-datepicker.css */"./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css");
-__webpack_require__(/*! /Users/dylanbowman/bad-stack/client/styles.scss */"./client/styles.scss");
-module.exports = __webpack_require__(/*! /Users/dylanbowman/bad-stack/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /Users/dylanbowman/Desktop/bad-stack/node_modules/bootstrap/dist/css/bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
+__webpack_require__(/*! /Users/dylanbowman/Desktop/bad-stack/node_modules/ngx-bootstrap/datepicker/bs-datepicker.css */"./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css");
+__webpack_require__(/*! /Users/dylanbowman/Desktop/bad-stack/client/styles.scss */"./client/styles.scss");
+module.exports = __webpack_require__(/*! /Users/dylanbowman/Desktop/bad-stack/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
 
 
 /***/ })
