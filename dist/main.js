@@ -877,7 +877,7 @@ var LandingHeaderComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"landing\" #loginElem>\n\tLanding Component\n  <app-landing-header></app-landing-header>\n  <app-landing-footer></app-landing-footer>\n</div>\n"
+module.exports = "<div class=\"landing\" #loginElem>\n\t<input style=\"margin:10px 5px 0px 10px\" class=\"login-input\" name=\"address\" [(ngModel)]=\"address\">\n\t<label>Address</label>\n\t{{address}}\n  <app-landing-header></app-landing-header>\n  <app-landing-footer></app-landing-footer>\n</div>\n"
 
 /***/ }),
 

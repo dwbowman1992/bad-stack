@@ -1,5 +1,7 @@
 <div class="landing" #loginElem>
-	Landing Component
+	<input style="margin:10px 5px 0px 10px" class="login-input" name="address" [(ngModel)]="address">
+	<label>Address</label>
+	{{address}}
   <app-landing-header></app-landing-header>
   <app-landing-footer></app-landing-footer>
 </div>
